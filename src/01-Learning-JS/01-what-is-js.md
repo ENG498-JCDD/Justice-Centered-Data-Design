@@ -230,6 +230,47 @@ console.log(
   _faveFood1_, " actually."
 )
 ```
+**Solution**
+
+```js
+/**
+ * Name: Nazifa Nuha Chowdhury
+ * Date: Aug 27, 2025
+ * Top 3 Favorite Foods:
+ * 1. Spinach
+ * 2. Tofu
+ * 3. Mushroom
+**/
+
+// Declare variables
+let MyfavFood1 = "Spinach";
+let MyfavFood2 = "Tofu";
+let MyfavFood3 = "Mushroom";
+
+// Print to console
+console.log(
+  "Ok, so y'all know that my #1 favorite food is ",
+  MyfavFood1,
+  ", my second favorite food is ", MyfavFood2,
+  ", and my third favorite food is", MyfavFood3
+)
+
+if (MyfavFood2.length > 0) {
+  // Redeclare MyfavFood1 within this scope only
+  let MyfavFood1 = "Mushroom"
+
+  console.log(
+    "jk! ",
+    MyfavFood1,
+    " is actually my #1 favorite food."
+  )
+}
+
+console.log(
+  "Ok. Don't get mad, but my #1 favorite is ",
+  MyfavFood1, " actually."
+)
+```
 
 ## Conclusion
 
