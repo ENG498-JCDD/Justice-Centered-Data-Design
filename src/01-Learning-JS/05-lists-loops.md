@@ -7,6 +7,16 @@ Remember, before you start anything else, always follow this GH methodological w
 1. Create meaningful **branch** that uses the agreed upon naming scheme: `CHP/X.x--lastname`.
 2. Practice the iterative process to **commit** and **push** regularly with meaningful **commit messages**.
 
+## Suggested Readings & References
+
+Open and bookmark these resources. They will help you complete your work.
+
+- ***Mozilla Developer Network***
+    - [Array data object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+    - [for...in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+    - [for...of loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+    - [if...else conditionals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
+
 ## Overview
 
 In the previous lesson, we used individual variables to represent some of the demographic information about the 19th century Irish immigrants featured in the [Bellevue Almshouse data](https://gih-nyc.org/almshouse/the-almshouse-records/), such as names.
