@@ -423,14 +423,17 @@ lessProfessions
 
 ### E2. Push/add a new profession to an array
 
-**Goal**: Add a new profession as a String, `"spinster"`, to your `professions` list, then log it to the web console.
+**Goal**: Use `.push()` to add a new profession as a String, `"spinster"`, to the end of your `professions` list, then log it to the web console.
 
 ```javascript
 // Convert and code here
+professions.push()
+console.log()
+
 ```
 
 <p class="codeblock-caption">
-  Interactive output of the array of <code>lessProfessions</code>
+  Interactive output of the array of updated <code>professions</code>
 </p>
 
 ```javascript
