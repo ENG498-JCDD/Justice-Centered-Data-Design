@@ -3,7 +3,7 @@
 ```js
 import {utcParse,utcFormat} from "d3-time-format";
 import {standardDeviation, sampleSkewness, sampleKurtosis, ckmeans, variance} from 'npm:simple-statistics';
-import {getUniquePropListBy,oneLevelRollUpFlatMap,twoLevelRollUpFlatMap,threeLevelRollUpFlatMap,mapDateObject,sumUpWithReducerTests, reduceRejectedBallots} from "./utils-tc/utils.js"
+import {getUniquePropListBy,oneLevelRollUpFlatMap,twoLevelRollUpFlatMap,threeLevelRollUpFlatMap,mapDateObject,sumUpWithReducerTests, reduceRejectedBallots} from "./utils/utils.js"
 ```
 
 How can we use our knowledge of central tendency, i.e., estimates of location, to ask questions about the data? In other words, how can we begin to define "normal" patterns across interested features, such as ballot requests status and race over time, so we can also judge what values of those features are not normal? And, is the central tendency of the data acceptable for the phenomena in question: mail-in ballot voting in North Carolina?
@@ -109,7 +109,7 @@ Plot.plot({
       {
         x: "ballot_req_dt_week",
         y: "percentage",
-        // r: "af",
+        r: "af",
         fill: "race",
         tip: true,
       }
@@ -118,6 +118,23 @@ Plot.plot({
   ]
 })
 ```
+
+**Discussion Question**: *What questions to pursue next, due to the above?*
+
+- Filter for 1-2 groups only?
+- How do make sure smaller dots aren't lost in translation?
+  - Tooltips! Plot.tip()
+- What are some reasons for this high frequency of rejections across all groups?
+  - Isolate which types of rejections were possibly higher issues than others?
+- Compare against any other available data.
+  - Campaigning ads: FB?
+    - Who was targeted? Not targeted?
+- Other groupings?
+  - Counties
+  - Age
+  - Is there column that reports disability aid?
+  - Same question but with translator?
+  - How requested: Mail vs. Email
 
 **Variance of rejected ballots**: <strong>${(variance(rejPercentages))}</strong>
 - ***Variance*** helps determine the data's spread size when compared to the ***mean*** value.
@@ -153,7 +170,7 @@ Plot.plot({
         {y: "count"},
         {
           x: "percentage",
-          // fill: "race",
+          fill: "race",
           tip: true,
         },
       )
