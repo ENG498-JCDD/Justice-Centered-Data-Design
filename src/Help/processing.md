@@ -136,6 +136,88 @@ Here's the output. Note the two levels of keys before arriving at the grouped Ar
 byClassAndRating
 ```
 
+### Use d3.rollup() for crunching numbers
+
+Don't forget that data processing is about getting the data groups and calculations you need to answer questions.
+
+What if we wanted to learn more about the typical user who reviews certain types of clothing, as well as the variation of that profile, based on available user data, such as the age, positive feedback counts, and the length of their review text. To begin asking questions about the users per clothing class and ratings, let's use d3.rollup() to add descriptive stats about these groupings.
+
+```js
+const getReviewTextLengths = (leaf) => {
+  return leaf.map(
+    (l) => {
+      let textLength = 0
+      if ((l["Review Text"] != null) && (l["Review Text"] != "")) {
+        textLength = l["Review Text"].length
+        return textLength
+      }
+      else {
+        return textLength
+      }
+    }
+  )
+}
+
+const getPositiveFeedbackCounts = (leaf) => {
+  return leaf.map(
+    (l) => {
+      if (l["Positive Feedback Count"] != null) {
+        return l["Positive Feedback Count"]
+      }
+      else {
+        // If null, return 0 to maintain appropriate length
+        return 0
+      }
+    }
+  )
+}
+```
+
+```js
+const byClassAndRatingSummaries = d3.rollup(
+  reviewsData,
+  leaf => {
+    // Get the groups rating
+    const rating = leaf[0].Rating
+    const className = leaf[0]["Class Name"]
+    const reviewTextLengths = getReviewTextLengths(leaf)
+    const positiveFeedbackCounts = getPositiveFeedbackCounts(leaf)
+
+    // Calc CTs
+    const centralTendencies = {
+      className: className,
+      rating: rating,
+      // Add about age
+      meanAge: d3.mean(leaf, v => v.Age),
+      medianAge: d3.median(leaf, v => v.Age),
+      modeAge: d3.mode(leaf, v => v.Age),
+      minAge: d3.min(leaf, v => v.Age),
+      maxAge: d3.max(leaf, v => v.Age),
+      // Add about review text lengths
+      meanReviewLength: d3.mean(reviewTextLengths),
+      medianReviewLength: d3.median(reviewTextLengths),
+      modeReviewLength: d3.mode(reviewTextLengths),
+      minReviewLength: d3.min(reviewTextLengths),
+      maxReviewLength: d3.max(reviewTextLengths),
+      // Add about positive review counts
+      meanPosFeedback: d3.mean(positiveFeedbackCounts),
+      medianPosFeedback: d3.median(positiveFeedbackCounts),
+      modePosFeedback: d3.mode(positiveFeedbackCounts),
+      minPosFeedback: d3.min(positiveFeedbackCounts),
+      maxPosFeedback: d3.max(positiveFeedbackCounts),
+    }
+    return centralTendencies
+  },
+  d => d["Class Name"],
+    d => d["Rating"],
+)
+```
+
+```js
+byClassAndRatingSummaries
+```
+
+
 ## Get Multiple Levels by chaining .get()
 
 We can retrieve nested groups with chained uses of .get().
@@ -151,6 +233,62 @@ Feel free to change the values to see the results.
 ```js
 byClassAndRating.get("Sweaters").get(1)
 ```
+
+```js
+const selectClothingClass = view(
+  Inputs.select(
+    reviewsData.map((r) => r["Class Name"]),
+    {
+      label: "Select a type of clothing",
+      value: ["Sweaters"],
+      multiple: true,
+      unique: true,
+    }
+  )
+)
+
+const selectRating = view(
+  Inputs.select(
+    [1,2,3,4,5],
+    {
+      label: "Select a rating",
+      value: [4],
+      multiple: true,
+    }
+  )
+)
+```
+
+```js
+const selectedClassAndRating = []
+for (const className of selectClothingClass) {
+  for (const rating of selectRating) {
+    selectedClassAndRating.push(byClassAndRatingSummaries.get(className).get(rating))
+  }
+}
+```
+
+```js
+Plot.plot({
+  marginLeft: 100,
+  x: {
+    // domain: [0, d3.max(reviewsData, d => d.Age)],
+  },
+  marks: [
+    Plot.rect(
+      reviewsData.sort((a,b) => d3.ascending(a["Age"], b["Age"])),
+      {
+        x: "Age",
+        y: "Class Name",
+        fill: "Age",
+        tip: true,
+        // x: 1,
+      }
+    )
+  ]
+})
+```
+
 
 ## Convert Map into Array of Objects
 
@@ -186,8 +324,54 @@ const reducedClassAndRating = Array.from(
 )
 ```
 
+<p class="codeblock-caption">
+  Reduced array of objects with specific clothing class and rating.
+</p>
+
 ```js
 reducedClassAndRating
 ```
 
 This is just the basics. If you wanted to create a function that work with a range of Class Name and Rating values, then simply create those lists of desired values, then loop the above pattern through a for loop. You'll need to add some more variable assignments, but this should get you going!
+
+## Calculate Estimates of Location into Flat Array of Objects
+
+1. Take stock of descriptive categories: Age, Rating, Positive Feedback Count
+2. Get unique list of all level 2 features.
+
+```js
+Array.from(
+  byClassAndRating.get(className2),
+  ([rating, values]) => {
+    const centralTendencies = {
+      rating: rating,
+      // Add about age
+      meanAge: d3.mean(values, v => v.Age),
+      medianAge: d3.median(values, v => v.Age),
+      modeAge: d3.mode(values, v => v.Age),
+      minAge: d3.min(values, v => v.Age),
+      maxAge: d3.max(values, v => v.Age),
+
+      // Add about ratings
+      meanRating: d3.mean(values, v => v.Rating),
+      medianRating: d3.median(values, v => v.Rating),
+      modeRating: d3.mode(values, v => v.Rating),
+      minRating: d3.min(values, v => v.Rating),
+      maxRating: d3.max(values, v => v.Rating),
+
+      // Add about Positive Feedback Count
+      meanPFC: d3.mean(values, v => v["Positive Feedback Count"]),
+      medianPFC: d3.median(values, v => v["Positive Feedback Count"]),
+      modePFC: d3.mode(values, v => v["Positive Feedback Count"]),
+      minPFC: d3.min(values, v => v["Positive Feedback Count"]),
+      maxPFC: d3.max(values, v => v["Positive Feedback Count"]),
+    }
+    return centralTendencies
+  }
+)
+// .flatMap(
+//   ([rating, ratingValues]) => {
+//     return ratingValues
+//   }
+// )
+```

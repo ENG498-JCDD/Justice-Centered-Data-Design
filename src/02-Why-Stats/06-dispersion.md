@@ -92,20 +92,35 @@ The following concepts help us describe the spread of the datapoints in the data
 
 <!-- Plot standard deviation and linear regression -->
 ```js
+const percentageCap = view(
+  Inputs.range([0, 1],
+  {
+    label: `Choose a cap for the maximim percentage ballots rejected`,
+    step: 0.05,
+    value: 0.4,
+  }
+))
+```
+
+```js
+const filteredRejections = rejectedOnly.filter((d) => d.percentage <= percentageCap)
+```
+
+```js
 Plot.plot({
   color: {
     legend: true,
   },
   marks: [
     Plot.linearRegressionY(
-      rejectedOnly,
+      filteredRejections,
       {
         x: "ballot_req_dt_week",
         y: "percentage",
       }
     ),
     Plot.dot(
-      rejectedOnly,
+      filteredRejections,
       {
         x: "ballot_req_dt_week",
         y: "percentage",
@@ -114,12 +129,12 @@ Plot.plot({
         tip: true,
       }
     ),
-    Plot.ruleY([d3.min(rejectedOnly, d => d.percentage)]),
+    Plot.ruleY([d3.min(filteredRejections, d => d.percentage)]),
   ]
 })
 ```
 
-**Discussion Question**: *What questions to pursue next, due to the above?*
+**Discussion Question**: *What questions could we pursue next, based on the results visualized above?*
 
 - Filter for 1-2 groups only?
 - How do make sure smaller dots aren't lost in translation?
