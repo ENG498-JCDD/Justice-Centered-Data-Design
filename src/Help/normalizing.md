@@ -288,6 +288,8 @@ However, according to the [Census](https://censusreporter.org/profiles/06000US37
 With this formula, we can then create a JS `Map()` of the appropriate keyed values for the feature of interest. In this case, we can map the racial categories to the population ratio to use in a normalizing procedure:
 
 ```javascript
+// Figures as per Census:
+// https://censusreporter.org/profiles/06000US3718392612-raleigh-township-wake-county-nc/
 const raleighPop = 131023
 const raleighPopRatios = new Map([
   ["white", 0.591*raleighPop],
