@@ -72,7 +72,53 @@ const LOCATIONS = new Map(
 )
 ```
 
+<!-- Declare/instantiate LOCATIONS -->
+```js
+const LOCATIONS = new Map(
+  [
+    ["RA, Wake County", "RALEIGH"],
+    ["Raleigh, Wake County", "RALEIGH"],
+    ["RALEIGH, Wake County", "RALEIGH"],
+    ["RALEGH, Wake County", "RALEIGH"],
+    ["RALEOIGH, Wake County", "RALEIGH"],
+    ["CA, Wake County", "CARY"],
+    ["CR, Wake County", "CARY"],
+    ["CY, Wake County", "CARY"],
+    ["C, Wake County", "CARY"],
+    ["CARY, Wake County", "CARY"],
+    ["Cary, Wake County", "CARY"],
+    ["WF, Wake County", "WAKE FOREST"],
+    ["ROLESVILLE, Wake County", "WAKE FOREST"],
+    ["MV, Wake County", "CEDAR FORK"],
+    ["GR, Wake County", "SAINT MARY'S"],
+    ["GARNER, Wake County", "SAINT MARY'S"],
+    ["WD, Wake County", "MARKS CREEK"],
+    ["Q, Wake County", "MIDDLE CREEK"],
+    ["FV, Wake County", "MIDDLE CREEK"],
+    ["AP, Wake County", "WHITE OAK"],
+    ["APEX, Wake County", "WHITE OAK"],
+    ["HS, Wake County", "HOLLY SPRINGS"],
+    ["KD, Wake County", "SAINT MATTHEWS"],
+    ["KNIGHTDALE, Wake County", "SAINT MATTHEWS"],
+    ["P, Wake County", "PANTHER BRANCH"],
+    ["ZB, Wake County", "LITTLE RIVER"],
+    ["D, Wake County", "Durham"],
+    ["`, Wake County", "UNKNOWN"],
+    ["J, Wake County", "UNKNOWN"],
+    ["WS, Wake County", "UNKNOWN"],
+    ["a, Wake County", "UNKNOWN"],
+    [", Wake County", "UNKNOWN"],
+    ["nan, Wake County", "UNKNOWN"],
+    ["24, Wake County", "UNKNOWN"],
+  ]
+)
+```
+
 ## How to Use a Custom Map() to Normalize Values
+
+```js
+const ncPoliceStops = FileAttachment("./../data/other/policestops-with-townships.csv").csv({typed:true})
+```
 
 Now that I wrote a custom map of values, I can use it in a function that will perform the following task:
 
@@ -111,6 +157,16 @@ const normalizeLocation = (d) => {
 }
 ```
 
+```js
+const normalizeLocation = (d) => {
+  const newNormal = LOCATIONS.get(d)
+  if ( (newNormal != null) || (newNormal != "") ) {
+    return newNormal
+  }
+  else { return "NOT_FOUND" }
+}
+```
+
 Once I define my normalizing function, I can use it within a .map() function, so it runs when I wish to create a new keyed property in my dataset, as seen in the example code below. Note how I retain the original property.
 
 <p class="codeblock-caption cc-image">
@@ -128,3 +184,200 @@ const ncPoliceStopsNormalized = ncPoliceStops.map(
   })
 )
 ```
+
+## Normalize by Population
+
+Normalizing can also mean that you account for the ratio of a particular column/feature of values in a dataset to make more fair comparisons. For example, if we wanted to answer questions about police traffic stops across race and other demographics about a particular population, then we should not rely solely on simple absolute frequencies to tell the story.
+
+```js
+const raleighPop = 131023
+const raleighPopRatios = new Map([
+  ["white", 0.591*raleighPop],
+  ["black", 0.219*raleighPop],
+  ["hispanic", 0.096*raleighPop],
+  ["native", 0.003*raleighPop],
+  ["asian/pacific islander", 0.044*raleighPop],
+  ["unknown", null],
+])
+```
+
+```js
+const raleighStopsByRace = d3.rollups(
+  ncPoliceStops,
+  (leaves) => {
+    // Adjust for population
+    if (leaves[0].race != "unknown") {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        normalizedStopFreq: leaves.length / raleighPopRatios.get(leaves[0].race),
+      }
+    }
+    else {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        normalizedStopFreq: null,
+      }
+    }
+  },
+  (d) => d.race,
+)
+
+const raleighStopsByRaceMap = d3.rollup(
+  ncPoliceStops,
+  (leaves) => {
+    // Adjust for population
+    if (leaves[0].race != "unknown") {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        normalizedStopFreq: leaves.length / raleighPopRatios.get(leaves[0].race),
+      }
+    }
+    else {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        normalizedStopFreq: null,
+      }
+    }
+  },
+  (d) => d.race,
+)
+```
+
+```js
+const flatStopsByRace = raleighStopsByRace.flatMap(
+  ([race, racesList]) => {
+    return racesList
+  }
+)
+
+const SOR_MEDIAN = d3.median(flatStopsByRace, (d) => d.normalizedStopFreq)
+const SOR_THRESHOLD = 0.001
+```
+
+Take the following case, where the absolute frequencies suggest, visually, how `black` and `white` racial categories are relatively equal.
+
+```js
+Plot.plot({
+  title: "Frequency of Police Stops per Race in Raleigh",
+  marks: [
+    Plot.barY(
+      flatStopsByRace,
+      {
+        x: "race",
+        y: "stopFreq",
+        fill: "race",
+        sort: {x: "-y"}
+      }
+    )
+  ]
+})
+```
+
+However, according to the [Census](https://censusreporter.org/profiles/06000US3718392612-raleigh-township-wake-county-nc/), whites account for 59.1% of Raleigh's 131,023 total population, while people who are Black account for only 21.9% of Raleigh. This particular ratio is relatively consistent across neighboring counties. That said, we can use these ratios to normalize the police stop frequencies with the following formula:
+
+>
+> `Normalized Frequency of Police Stops` =
+>
+> `AF of Police Stops by Race` / (`AF of Raleigh's Population` x `Percentage of Racial Demographic`)
+>
+
+With this formula, we can then create a JS `Map()` of the appropriate keyed values for the feature of interest. In this case, we can map the racial categories to the population ratio to use in a normalizing procedure:
+
+```javascript
+const raleighPop = 131023
+const raleighPopRatios = new Map([
+  ["white", 0.591*raleighPop],
+  ["black", 0.219*raleighPop],
+  ["hispanic", 0.096*raleighPop],
+  ["native", 0.003*raleighPop],
+  ["asian/pacific islander", 0.044*raleighPop],
+  ["unknown", null],
+])
+```
+
+Then, we can use the `raleighPopRatios` Map() in a d3.rollups() pattern to output the data grouped by race with normalized frequencies:
+
+```javascript
+// Group by race
+const raleighStopsByRace = d3.rollups(
+  ncPoliceStops,
+  (leaves) => {
+    /** Adjust for population
+     *  If .race is not the unknown category, use formula.
+    **/
+    if (leaves[0].race != "unknown") {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        // Use the normalizing formula and mapped ratio value by race
+        normalizedStopFreq: leaves.length / raleighPopRatios.get(leaves[0].race),
+      }
+    }
+    else {
+      return {
+        race: leaves[0].race,
+        stopFreq: leaves.length,
+        // We can't account for the "unknown" race value in the data,
+        // so set it to null.
+        normalizedStopFreq: null,
+      }
+    }
+  },
+  (d) => d.race,
+)
+
+// Flatten the rolledup Map
+const flatStopsByRace = raleighStopsByRace.flatMap(
+  ([race, racesList]) => {
+    return racesList
+  }
+)
+```
+
+Now, let's plot the normalized results, based on the local racial demographic ratio profile of Raleigh.
+
+After normalizing the frequencies per race, we can now communicate the following about police stops in Raleigh:
+
+<div class="grid grid-cols-2">
+  <div class="card">
+    <h3>Black population vs. White</h3>
+    <p>
+      Stopped ${raleighStopsByRaceMap.get("black").normalizedStopFreq / raleighStopsByRaceMap.get("white").normalizedStopFreq}x more than whites
+    </p>
+  </div>
+  <div class="card">
+    <h3>Hispanic population vs. White</h3>
+    <p>
+      Stopped ${raleighStopsByRaceMap.get("hispanic").normalizedStopFreq / raleighStopsByRaceMap.get("white").normalizedStopFreq}x more than whites
+    </p>
+  </div>
+</div>
+
+```js
+Plot.plot({
+  title: "Normalized Frequency of Police Stops per Race in Raleigh",
+  marks: [
+    Plot.barY(
+      flatStopsByRace,
+      {
+        x: "race",
+        y: "normalizedStopFreq",
+        fill: "race",
+        sort: {x: "-y"}
+      }
+    )
+  ]
+})
+```
+
+The results change dramatically and paint a different picture, if we adjust the frequencies in relation to a ratio appropriate for the column of values. We can also now conduct other measures, such as central tendencies:
+
+- **MAX `normalizedStopFreq`**: ${d3.max(flatStopsByRace, (d) => d.normalizedStopFreq)}
+- **MIN `normalizedStopFreq`**: ${d3.min(flatStopsByRace, (d) => d.normalizedStopFreq)}
+- **AVG MEAN `normalizedStopFreq`**: ${d3.mean(flatStopsByRace, (d) => d.normalizedStopFreq)}
+- **MEDIAN `normalizedStopFreq`**: ${SOR_MEDIAN}
+- **MODE `normalizedStopFreq`**: ${d3.mode(flatStopsByRace, (d) => d.normalizedStopFreq)}

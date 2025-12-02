@@ -269,6 +269,10 @@ for (const className of selectClothingClass) {
 ```
 
 ```js
+selectedClassAndRating
+```
+
+```js
 Plot.plot({
   marginLeft: 100,
   x: {
@@ -276,7 +280,7 @@ Plot.plot({
   },
   marks: [
     Plot.rect(
-      reviewsData.sort((a,b) => d3.ascending(a["Age"], b["Age"])),
+      reviewsData.sort((a,b) => d3.ascending(a.Age, b.Age)),
       {
         x: "Age",
         y: "Class Name",
