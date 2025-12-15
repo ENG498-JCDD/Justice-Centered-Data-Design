@@ -13,9 +13,10 @@ Here are some of the important things that you can do from the command line:
 
 <img src="../assets/images/getting-started/command-line/cmdline.png" alt="The command line" style="width:100%;" />
 
-**Note**: Technically speaking, *command line*, *shell*, *bash*, and *terminal* all mean slightly different things. The Digital Humanities Research Institute provides [a helpful primer on the distinctions](https://github.com/DHRI-Curriculum/glossary/blob/master/sections/command-line.md#glossary).
+<p class="note">Technically speaking, <em>command line, shell, bash, and terminal</em> all mean slightly different things. The Digital Humanities Research Institute provides <a href="https://github.com/DHRI-Curriculum/glossary/blob/master/sections/command-line.md#glossary" target="_blank" rel="noopenner noreferrer">a helpful primer on the distinctions</a>.
+</p>
 
-The command line interface is often contrasted with the graphical user interface or GUI (pronounced *gooey*, like [St. Louis gooey butter cake](https://en.wikipedia.org/wiki/Gooey_butter_cake)). This is the way that most people are familiar with navigating their computers.
+The command line interface is often contrasted with the graphical user interface or GUI (pronounced *gooey*). This is the way that most people are familiar with navigating their computers.
 
 To illustrate the difference between the command line and the GUI, consider the following example. I want to make a new folder to organize my notes for this class. So I drag my mouse cursor and click on a button that says "New Folder," which makes a small icon of a folder appear. I title this folder "test". Now I want to delete this folder. So I drag and drop the folder icon into a tiny trash can icon. This is the GUI in action. This is how we interact with our computers *graphically* — with visual icons, movements, and mouse clicks.
 
@@ -41,47 +42,43 @@ We're going to focus on the command line interfaces for Mac, Microsoft Windows, 
 
 If you're using a Mac, access the command line through an application called "Terminal" by:
 
-1. Searching for nder Applications -> Utilities.
-
-<img src="../assets/images/getting-started/command-line/Terminal-Applications-Utilities.png" alt="Open Mac Terminal in Applications" style="width:100%;" />
-
-<img src="../assets/images/getting-started/command-line/cmdline.png" alt="The command line" style="width: 100%" />
-
-When you open Terminal, you will see the name of your computer and your username followed by a dollar sign `$` or `%`. For example, when I go to the command line, I see the prompt `calindgr-lt:~ calindgr$`, as shown above. You type commands after the dollar sign `$`.
-
-- **NOTE**: Your code begins after the dollar sign `$` or percentage sign `%` in all example code in this book or elsewhere—that symbol represents where you should start typing your own code. You do not need to include the symbol in your own code. It will cause an error. It's a common beginner's mistake to include the dollar sign `$` or another symbol, especially when consulting examples from the internet.
+1. Searching for the Terminal app under Applications -> Utilities.
+    <img src="../assets/images/getting-started/command-line/Terminal-Applications-Utilities.png" alt="Open Mac Terminal in Applications" style="width:100%;" />
+    <img src="../assets/images/getting-started/command-line/cmdline.png" alt="The command line" style="width: 100%" />
+2. When you open Terminal, you will see the name of your computer and your username followed by a dollar sign `$` or `%`.
+    <p class="example">When I go to the command line, I see the prompt <code>calindgr-lt:~ calindgr$</code>, as shown above.</p>
+3. Type commands after the trailing dollar sign `$`.
+    <p class="warning">It's a common beginner's mistake to include the dollar sign <code>$</code> or another symbol, especially when consulting examples from the internet.<br><br>Your command always begins after the dollar sign <code>$</code> or percentage sign <code>%</code> in all example code in this book or elsewhere. These symbolx represent where you should start typing your own code. You do not need to include the symbol in your own code. It will cause an error.</p>
 
 </div>
 
- ### <img src=https://upload.wikimedia.org/wikipedia/commons/3/34/Windows_logo_-_2012_derivative.svg width=20 align=left> Windows OS
+ ### <img src=https://upload.wikimedia.org/wikipedia/commons/3/34/Windows_logo_-_2012_derivative.svg width=20 style="text-align: left"> Windows OS
 
 The command line for Windows users, called "Command Prompt," is different from the command line interface for Mac users and the wider Unix-like family. The Windows Command Prompt is not as powerful as the Unix shell in certain ways.
 
-<div class="margin sidebar" style="padding: 10px">
-
-<p class="sidebar title"><b>Google Breakdown</b></p>
-
-> See Google's breakdown of the best [Windows Command-line Tools](https://developers.google.com/web/shows/ttt/series-2/windows-commandline)
-
+<div class="example">
+  <p>
+    <strong>Google's Review</strong>: See Google's breakdown of the best <a href="https://developers.google.com/web/shows/ttt/series-2/windows-commandline">Windows Command-line Tools</a>.
+  </p>
 </div>
 
-However, beginning with Windows 7, Microsoft also introduced "PowerShell," which acts like a more flexible and more powerful command line for Windows users. (You can read more about PowerShell in [Microsoft's official documentation](https://docs.microsoft.com/en-us/powershell/?view=powershell-6)).
+However, beginning with Windows 7, Microsoft also introduced "PowerShell," which acts like a more flexible and more powerful command line for Windows users. (You can read more about PowerShell in <a href="https://docs.microsoft.com/en-us/powershell/?view=powershell-6">Microsoft's official documentation</a>).
 
-<div class="margin sidebar" style="padding: 10px">
+#### Watchout for "Aliases"
 
-<p class="sidebar title"><b>Aliases: An Example</b></p>
+Commandprompt and Powershell use slightly different commands.
 
-> For example, the PowerShell command that lists all the files and folders in a particular directory is `Get-ChildItem`. The traditional Windows Command Prompt command `dir` and the Unix command `ls` also work in PowerShell and perform the same function.
-
-</div>
+The PowerShell command that lists all the files and folders in a particular directory is <code>Get-ChildItem</code>. The traditional Windows Command Prompt command <code>dir</code> and the Unix command <code>ls</code> also work in PowerShell and perform the same function.
 
 We're going to focus on PowerShell, as opposed to Command Prompt, for a number of reasons. One very convenient reason is that PowerShell commands have "aliases." They go by a number of different names, including names that are used by the traditional Windows Command Prompt and by a Mac Terminal.
 
 These aliases will conveniently allow you to learn a little about Unix and Windows commands at the same time. Since we're mostly trying to understand how the command line functions at a broad level, this level of familiarity will suffice for now. In the future, you may want to invest more time in learning the specifics of PowerShell or the Command Prompt.
 
-<img src="https://www.isunshare.com/images/article/windows-10/5-ways-to-open-windows-powershell-in-windows-10/open-windows-powershell-by-search.png" alt="Open Windows PowerShell" class="center" >
+To open PowerShell, simply search for it in the Windows search bar.
 
-To open PowerShell, simply search for it in the Windows search bar, as shown above.
+  <div class="example">
+    <img src="https://www.isunshare.com/images/article/windows-10/5-ways-to-open-windows-powershell-in-windows-10/open-windows-powershell-by-search.png" alt="Open Windows PowerShell" />
+  </div>
 
 ### <img src=https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Chrome_icon_%28September_2014%29.svg width=20 align=left> Chromebook
 
@@ -117,7 +114,7 @@ To access the command line from a Chromebook, you first need to turn on Linux (B
 
 ## Submission
 
-On Moodle, submit an image of a screenshot showing your command of the command line.
+Submit an image of a screenshot showing your command of the command line. `:-)`
 
 Make sure the screenshot shows how you demonstrate the following actions:
 

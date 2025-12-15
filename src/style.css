@@ -1314,6 +1314,10 @@ video {
 .warning {
   background-color: var(--theme-foreground-alt);
   color: var(--theme-background-alt);
+
+  & code {
+    color: var(--theme-foreground)
+  }
 }
 .example {
   margin: auto;

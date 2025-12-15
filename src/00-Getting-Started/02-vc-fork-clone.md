@@ -20,8 +20,13 @@ Here's how to easily fork a repo with Github.com's interface:
 
 Boom! That's it! Now you have your own copy of my original repo, which you can locate under your personal profile. The URL will follow this scheme: `https://github.com/YOURUSERNAME/REPONAME`.
 
-- **EXAMPLE**: If my repo was called `salazzle`, I could visit my repo on Github.com by adding my username, `lingeringcode`, to the URL scheme: `https://github.com/lingeringcode/salazzle`.
-    - ***Warning! Pokemon joke (╯°□°)╯︵◓***: If you visit this URL, you will be poisoned for 10 damage and burned for 20 damage.
+<div class="example">
+  <p>
+
+If my repo was called `salazzle`, I could visit my repo on Github.com by adding my username, `lingeringcode`, to the URL scheme: `https://github.com/lingeringcode/salazzle`.
+
+</p>
+</div>
 
 ## 0.2.2 Clone the Forked Repo to Your Local Computer
 
@@ -54,8 +59,13 @@ To save a repo to your local computer, we need to use the ***clone*** feature in
 4. In the new popup window, use the **Filter** searchbar to locate your desired repo to clone by typing in the name of the repo.
 5. Once you identify the desired repo to clone, select it in the options. The repo's background should turn blue.
 6. ***WARNING!*** **BEFORE YOU CLICK CLONE**, click the **Choose...** button, which prompts you to locate/create a folder in which to clone this repo. Choose a meaningful place to save your local repo.
-    * ***WARNING!*** Do **NOT** save it to your Desktop. Instead, consider creating a dedicated class folder and save the repo inside of that folder.
-7. Once you choose your desired local folder, click the **Clone** button to complete the cloning process.
+    <p class="warning">
+      Do <strong>NOT</strong> save your repo to any <strong>cloud-based folder (iCloud, Drive, Sharepoint, etc.)</strong> or your <strong>Desktop</strong>. Instead, consider creating a dedicated class folder and save the repo inside of that folder.
+      <br>
+      <br>
+      If you save the project to a cloud-based folder, your computer will run very slowly or crash when you work through this textbook.
+    </p>
+7. Once you choose your desired local folder, which should not be a cloud-based folder, click the **Clone** button to complete the cloning process.
 
 ## 0.2.3 Test the GH setup by adding folders and files
 
@@ -65,7 +75,7 @@ Before we move forward, let's make sure that everything is working with GHD. Rem
   <source src="../assets/vids/getting-started/00-gs-test-gh.mp4" type="video/mp4" />
 </video>
 
-1. Open the repo (folder) in VS Code.
+1. Open the repo (folder) in **VS Code**.
 2. Test to see if your git is tracking changes by adding a new file to the **very-interesting-folder**. Add the file in VS Code by selecting the folder, right-clicking on the folder and select "**New File**", then name the file **testing.txt**
 3. Return to the Github Desktop app and see if the file's there. GH Desktop should have the file listed in the viewer pane on the left side.
 
@@ -79,7 +89,7 @@ Before you move forward, be sure that you understand the following ideas and pro
 
 ## Submission
 
-On Moodle, submit an image of the following:
+Submit an image of the following:
 
 1. Your forked version of [https://github.com/lingeringcode/sjd-test](https://github.com/lingeringcode/sjd-test) in your GH profile online.
 2. A cloned version of this fork on your local computer.

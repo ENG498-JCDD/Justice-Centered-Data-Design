@@ -293,5 +293,5 @@ ENTER_IMG_HERE
 
 1. Create a **PR** (**pull request**) and use the provided content in the template to start it.
 2. We won't require any peer responses yet, since we're still getting the hang of git/Github. But, in the future, some chapters will include a peer response.
-3. Submit the PR link in Moodle, when you're ready.
+3. Submit the PR link in the appropriate place, when you're ready.
     <p class="warning">Make sure that your repo is set to being Public.</p>

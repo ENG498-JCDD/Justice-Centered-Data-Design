@@ -383,3 +383,25 @@ The results change dramatically and paint a different picture, if we adjust the 
 - **AVG MEAN `normalizedStopFreq`**: ${d3.mean(flatStopsByRace, (d) => d.normalizedStopFreq)}
 - **MEDIAN `normalizedStopFreq`**: ${SOR_MEDIAN}
 - **MODE `normalizedStopFreq`**: ${d3.mode(flatStopsByRace, (d) => d.normalizedStopFreq)}
+
+```js
+const xy = Plot.normalizeX({ basis: "sum", z: "race", x: "stopFreq", y: "race"})
+```
+
+```js
+for (const key in xy) {
+  console.log(key)
+}
+```
+
+```js
+Plot.plot({
+  height: 500,
+  marginLeft: 125,
+  marks: [
+    Plot.ruleY(flatStopsByRace, Plot.groupY({x1: "min", x2: "max"}, { ...xy, sort: {y: "x1"}})),
+    Plot.dot(flatStopsByRace, {...xy, fill: "race", title: "race"}),
+    Plot.text(flatStopsByRace, Plot.selectMinX({...xy, textAnchor: "end", dx: -6, text: "race"}))
+  ]
+})
+```

@@ -1,8 +1,6 @@
 # 00-What is Observable Framework?
 
-Observable Framework — or “Framework” for short — is an open-source static-site generator for data apps.
-
-By *data app* we mean an application that is primarily a display of data. Data apps help you derive insights (to understand) and evaluate potential decisions (to take action).
+Observable Framework is an open-source, static-site generator for data apps. A *data app* is an application that primarily displays and reports data. Data apps help people take data about a particular problem/topic, so they can better understand it, monitor it, and take well-informed action.
 
 A data app might be a set of coordinated **interactive visualizations** for your own or your community's “self-service” analysis. For example, you can explore a computational model or to investigate activity like Taxi rides in NYC;
 
@@ -33,7 +31,9 @@ Or, you might create a **live dashboard** that places current events in the cont
 
 … or any number of other quantitative displays.
 
-Data apps are useful in almost every domain, whether business intelligence, product analytics, monitoring operations, scientific reporting, and more. We're going to explore and experiment with its role for technical communicators who take seriously their commitment to advocacy work—both those specifically trained in TPC or those whose professions communicate complexity. Overall, let's have fun learning OF data apps for TPC, so we can dream together how they can be our tools for critical thinking and advocacy by enabling you to answer questions, explore possibilities, organize knowledge, and communicate insights.
+Data apps are useful in almost every domain, whether business or nonprofit sectors, scientific reporting, community-driven projects, and more.
+
+We're going to explore and experiment with its role for technical communicators who take seriously their commitment to advocacy work—both those specifically trained in TPC or those whose professions communicate complexity. Overall, let's have fun learning OF data apps for TPC, so we can dream together how they can be our tools for critical thinking and advocacy by enabling you to answer questions, explore possibilities, organize knowledge, and communicate insights.
 
 ## 0.0.1 Why JavaScript & Observable?
 
