@@ -32,3 +32,5 @@ nc_absentee_20241105.csv
 # Ignored Data
 src/data/archive-audit/all_results_combined.csv
 src/data/hcr-letters/hcr-letters-substack.json
+src/data/other/classHalloweenCandy2025.csv
+src/data/us-population-state-age.csv
