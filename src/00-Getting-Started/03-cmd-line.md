@@ -11,9 +11,15 @@ Here are some of the important things that you can do from the command line:
 * Do simple tasks, such as navigating your folders, renaming many files in batches, or resizing many images, allthewhile faster and more efficiently.
 * Gain more power and flexibility over your computing experience!
 
-<img src="../assets/images/getting-started/command-line/cmdline.png" alt="The command line" style="width:100%;" />
+<figure>
+  <figcaption class="figure-caption">
+    The command line interface on a Mac OS that says, 'Welcome to the terminal!'
+  </figcaption>
+  <img src="../assets/images/getting-started/command-line/cmdline.png" alt="" />
+</figure>
 
-<p class="note">Technically speaking, <em>command line, shell, bash, and terminal</em> all mean slightly different things. The Digital Humanities Research Institute provides <a href="https://github.com/DHRI-Curriculum/glossary/blob/master/sections/command-line.md#glossary" target="_blank" rel="noopenner noreferrer">a helpful primer on the distinctions</a>.
+<p class="note">
+  Technically speaking, <em>command line, shell, bash, and terminal</em> all mean slightly different things. The Digital Humanities Research Institute provides <a href="https://github.com/DHRI-Curriculum/glossary/blob/master/sections/command-line.md#glossary" target="_blank" rel="noopenner noreferrer">a helpful primer on the distinctions</a>.
 </p>
 
 The command line interface is often contrasted with the graphical user interface or GUI (pronounced *gooey*). This is the way that most people are familiar with navigating their computers.
@@ -22,9 +28,14 @@ To illustrate the difference between the command line and the GUI, consider the 
 
 But that's not the only way we can interact with our computers. We can do all of the above from the command line as well. Instead of dragging and dropping little folder icons, we would type in textual commands, such as `mkdir test-1-2-3` (to make a folder or directory) and `rmdir test-1-2-3` (to remove the directory).
 
-<video controls style="width: 620px; height:620px">
-  <source src="../assets/vids/getting-started/03-cmd-line-primer.mp4" type="video/mp4" />
-</video>
+<figure>
+  <figcaption class="figure-caption">
+    How to use the command line to make and remove folders.
+  </figcaption>
+  <video controls>
+    <source src="../assets/vids/getting-started/03-cmd-line-primer.mp4" type="video/mp4" />
+  </video>
+</figure>
 
 Making a folder from the command line as opposed to dragging and clicking with the mouse won't save us a ton of time. Maybe a couple of seconds at most.
 
