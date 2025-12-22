@@ -44,7 +44,7 @@ Same readings as Chapter 2.3.
 4. **MDN Javascript Guide**: Skim and bookmark for quick referencing:
     1. [Flatten nested arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) with `.flatMap()`
 
-## Overview of Exploratory Data Analysis Exercise
+## 1. Overview of Exploratory Data Analysis Exercise
 
 In this extended exercise, we're building on our scenario of working at Protect Democracy (PD). The work you completed in chapter 2.3 is typically called ***exploratory data analysis*** (EDA). It's been called EDA because all of this grouping, frequency, and tabulation work inspires new angles and questions to pursue. One such question might be about trying to better understand the absolute frequencies computed above. Indeed, when dealing with population demographics in particular, it is good to consider different ways to group and represent the distribution of the data. If we look back at the data and see the absolute frequencies grouped by race, it's hard to distinguish if the absolute numbers are significant or not. Even if we know that the majority of people in North Carolina are white, those high absolute frequencies in the white racial group seem to overshadow all other racial groups.
 
@@ -458,19 +458,21 @@ Tabulate the data here. Use `Inputs.table()`'s `format` option to express the pe
 // Convert and tabulate afGroupedPercResults here
 ```
 
-## Question: Why not percentage of all ballots per week?
+## E6. Rfelection Questions
+
+### 1. Why not percentage of all ballots per week?
 
 Why did I direct you to sum the total for the week > race group, rather than calculate the percentage based on the grand sum total for the entire week across all included races? How are those percentages' respective *interpretive levels* different?
 
 YOUR_RESPONSE_HERE
 
-## Question: New insights?
+### 2. Describe your new insights
 
 After tabulating the data, as well as sorting and reviewing it, what new angles and questions come to mind?
 
 YOUR_RESPONSE_HERE
 
-## Question: Difficulties?
+### 3. Describe your difficulties
 
 After tabulating the data, as well as sorting and reviewing it, what difficulties are you experiencing as you review so much data in a table?
 

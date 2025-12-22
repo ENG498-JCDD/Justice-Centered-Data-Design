@@ -1,4 +1,4 @@
-# Named Entity Recognition with compromise.js
+# 3.3—Named Entity Recognition with compromise.js
 
 <!-- IMPORTS -->
 ```js
@@ -14,34 +14,6 @@ import {getUniquePropListBy, sparkbar, objectifyList, downloadAsCSV} from "./uti
 ```js
 const numberNoCommasFormatter = d3.format("")
 ```
-
-## What is Named Entity Recognition (NER)
-
-***Named Entity Recognition*** (NER) can help us computationally extract important information from a large corpus of texts. For example, NER helps you extract some of the following *entities* across a corpus:
-
-- people
-- locations
-- nouns
-- adverbs
-- possessives
-- acronyms
-- etc.
-
-By extracting such *entities* from "unstructured data" like texts, you could thereby begin to conduct analyses about such entities:
-
-- **EDA**: frequency distributions, central tendencies, dispersion
-- **Network**: While we will not be able to cover network analysis, NER facilitates this work to group the data and thereby calculate network analysis measures to NER across the corpus.
-- **Mapping**: By extracting named locations across a corpus, you can then begin the process to create a geotagged dataset.
-
-### NER comes from NLP (Natural Language Processing)
-
-We are all users of NER and broader methods of computational methods from the interdisciplinary field of ***Natural Language Processing*** (NLP). For instance, text eidtors that include technological features such as spell-check, autocompletion, or translation to name a few are the result of NLP.
-
-NLP is interdisciplinary and focuses on programmatically understanding the natural features of language. NLP includes researchers from linguistics, statistics, computer science, and more. More recent advances with NLP are the result of more widely available texts available on the web, which have, in turn, spurred a wider availability of open-source NLP tools for folks like us to creatively apply in our projects.
-
-### How will we apply NER?
-
-In this notebook, we will use [compromise.js](https://github.com/spencermountain/compromise/blob/master/README.md) to learn about and apply NER, which its creator, Spencer Kelly, refers to as a "modest Natural Language Processing library."
 
 ## Suggested Readings
 
@@ -98,8 +70,37 @@ const mappedLetters = new Map(filteredPerLetter.map(
 ))
 ```
 
-## 1. Group the Data by Year
+## 1. What is Named Entity Recognition (NER)
 
+***Named Entity Recognition*** (NER) can help us computationally extract important information from a large corpus of texts. For example, NER helps you extract some of the following *entities* across a corpus:
+
+- people
+- locations
+- nouns
+- adverbs
+- possessives
+- acronyms
+- etc.
+
+By extracting such *entities* from "unstructured data" like texts, you could thereby begin to conduct analyses about such entities:
+
+- **EDA**: frequency distributions, central tendencies, dispersion
+- **Network**: While we will not be able to cover network analysis, NER facilitates this work to group the data and thereby calculate network analysis measures to NER across the corpus.
+- **Mapping**: By extracting named locations across a corpus, you can then begin the process to create a geotagged dataset.
+
+### NER comes from NLP (Natural Language Processing)
+
+We are all users of NER and broader methods of computational methods from the interdisciplinary field of ***Natural Language Processing*** (NLP). For instance, text eidtors that include technological features such as spell-check, autocompletion, or translation to name a few are the result of NLP.
+
+NLP is interdisciplinary and focuses on programmatically understanding the natural features of language. NLP includes researchers from linguistics, statistics, computer science, and more. More recent advances with NLP are the result of more widely available texts available on the web, which have, in turn, spurred a wider availability of open-source NLP tools for folks like us to creatively apply in our projects.
+
+### How will we apply NER?
+
+In this notebook, we will use [compromise.js](https://github.com/spencermountain/compromise/blob/master/README.md) to learn about and apply NER, which its creator, Spencer Kelly, refers to as a "modest Natural Language Processing library."
+
+## 2. Group the Data by Year
+
+<!-- Observable caching warning -->
 <div class="warning">
   <p>
     Since Observable agressively caches variables/data, as you make changes to your notebook, you should conduct a hard-refresh of your web browser's cache.
@@ -112,8 +113,6 @@ const mappedLetters = new Map(filteredPerLetter.map(
     <li>Windows: <strong>ctrl</strong>+<strong>shift</strong>+<strong>r</strong>
   </ul>
 </div>
-
-
 
 <!-- Declare/instantiate customNorms codeblock to the page -->
 ```js
@@ -247,12 +246,12 @@ const normedExcerpt = perYearJoinedLettersMap.get(yearSelectionNER).normalized.s
   </div>
 </div>
 
-### Notes about impact of normalize() parameters
+### 2.1 Notes about impact of normalize() parameters
 
 - Retaining original verb tense vs. Not retaining it
 
 
-## Named Entity Recognition
+## 3. Named Entity Recognition
 
 The `compromise` library can perform with a type of language modeling called ***named entity recognition***.
 
@@ -458,21 +457,77 @@ const nGramCols = [
 
 </div>
 
-<!-- ## HTML Tagged Visualization Outputs
+## 4. HTML Tagged Visualization Outputs
 
+We can create custom outputs with tags by using HTML and some CSS styles. Let' create a simple version, where we take a letter's NER object and
+
+<style>
+  .ner__red_1,.ner__red_2,.ner__red_3,
+  .ner__blue_1,.ner__blue_2,.ner__blue_3 { padding: 0.15rem; border-radius: 8px }
+  .ner__red_1,.ner__red_2,.ner__red_3 {background-color:red; color: white;}
+  .ner__blue_1,.ner__blue_2,.ner__blue_3 {background-color:blue; color: white;}
+</style>
+
+<div class="grid grid-cols-1">
+  <div id="ner__tagging_example_2" class="card"></div>
+</div>
+
+<!-- stringToHTML() -->
 ```js
-let testString = perYearJoinedLettersMap.get(year2Selection).nlpLetters.html({
-    '.red': 'Trump #Noun', // class name
-    '.blue': '#Place', // class name
-  })
-testString = html`<div>${str}</div>`
+const checkParserSupport = (() => {
+	if (!window.DOMParser) return false;
+	var parser = new DOMParser();
+	try {
+		parser.parseFromString('x', 'text/html');
+	} catch(err) {
+		return false;
+	}
+	return true;
+})();
+
+/**
+ * Convert a template string into HTML DOM nodes
+ * @param  {String} str The template string
+ * @return {Node}       The template HTML
+ */
+const stringToHTML = (str) => {
+
+	// If DOMParser is supported, use it
+	if (checkParserSupport) {
+		const parser = new DOMParser();
+		let doc = parser.parseFromString(str, 'text/html');
+		return doc.body;
+	}
+
+	// Otherwise, fallback to older method
+	let dom = document.createElement('div');
+	dom.innerHTML = str;
+	return dom;
+
+};
 ```
 
-<div class="grid grid-cols-2">
-  <div class="card">
-    ${testString}
-  </div>
-</div> -->
+```js
+let testString2 = perYearJoinedLettersMap.get(year2Selection).nlpLetters.html({
+    '.ner__red_1': 'Trump #Verb',
+    '.ner__red_2': 'Trump #Verb #Verb',
+    '.ner__red_3': 'Trump #Verb #Verb #Verb',
+    '.ner__blue_1': 'Biden #Verb',
+    '.ner__blue_2': 'Biden #Verb #Verb',
+    '.ner__blue_3': 'Biden #Verb #Verb #Verb',
+  })
+```
+
+```js
+const pTag2 = stringToHTML(testString2)
+// let pTag2 = document.createElement("p")
+// pTag2.innerHTML(testString)
+```
+
+```js
+let nerTagEx2 = document.getElementById("ner__tagging_example_2")
+nerTagEx2.appendChild(pTag2)
+```
 
 
 ## How can I download outputs? Enter downloadAsCSV()!

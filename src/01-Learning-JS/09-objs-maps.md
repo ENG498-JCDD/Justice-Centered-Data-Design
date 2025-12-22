@@ -1,4 +1,6 @@
-# 1.9 Objects & Maps
+# 1.9—Objects & Maps
+
+<p style="display:none"></p>
 
 ## Start Your GH Workflow
 
@@ -28,7 +30,7 @@ Indeed, we also learned how CSV and JSON data-interchange formats self-document 
 
 Since we will want to learn how to design more robust data relationships and values, let's take some time to learn a few common JS data structures, functions, and methods that help us work with datasets.
 
-## 1.9.1 The Ubiquitous Data Problem: Processing It
+## 1. The Ubiquitous Data Problem: Processing It
 
 At this point in the chapter, you might be asking yourself, "Why do I need to learn more JS data structures?"
 
@@ -38,7 +40,7 @@ Indeed, according to a survey of over 16,000 data-science practitioners ([Kaggle
 
 Processing is a catch-all term that typically refers to any actions that take data in its original provenance and dis-aggregated form and change any structure and/or values, as desired, by the new persons in new contexts and situations.
 
-So, we need to learn about few more data structures called ***Maps***, so we can complete our goals for the data with confidence.
+So, we need to learn about few more data structures called ***Objects*** & ***Maps***, so we can complete our goals for the data with confidence.
 
 <div class="note--suggested-reading">
   <p>
@@ -50,7 +52,7 @@ So, we need to learn about few more data structures called ***Maps***, so we can
   </ul>
 </div>
 
-## 1.9.2 JS Object Literals & Array of Objects
+## 2. JS Object Literals & Array of Objects
 
 Ok, so we learned a little about the CSV and JSON data-interchange formats—formats that people can use across nation-states and expect them to work well.
 
@@ -66,7 +68,7 @@ Now, let's learn about some JS-specific data types that you will use frequently.
   If I refer to a JS Object in this textbook, it will refer to object literals, unless otherwise specified.
 </p>
 
-A common structure used to create a collection of objects is to push them into an Array `[]`. Indeed, recall how when you load data with Observable Framework's `FileAttachment` function, it will automatically convert it into an Array of Objects:
+A common structure used to create a collection of objects is to `.push()` them into an ***Array*** `[]`. Indeed, recall how when you load data with Observable Framework's `FileAttachment` function, it will automatically convert it into an Array of Objects:
 
 ```javascript
 [
@@ -204,14 +206,14 @@ let nc2024GroupedVoterInfo = [
 ```
 
 <p class="codeblock-caption">
-  Interactive output of <code>nc2024GroupedVoterInfo</code>
+  Interactive output of first object in the array of objects <code>nc2024GroupedVoterInfo</code>
 </p>
 
 ```js
 nc2024GroupedVoterInfo[0]
 ```
 
-### Accessing, setting, and updating object properties
+### 2.1 Accessing, setting, and updating object properties
 
 Here's how to access properties of an object. To practice, I created a new executable `js` codeblock below and declared and assigned the above array of object literals: `nc2024VoterInfo`.
 
@@ -245,21 +247,27 @@ let nc2024VoterInfo = [
 ]
 ```
 
-Recall that this outermost structure is an Array `[]`, so we can use each item's index position to access each object.
-
 #### Access first object in Array
 
-Easy review here. Use the index position to access each object literal in the Array.
+Easy review here. Recall that the outermost structure of `nc2024VoterInfo` is an Array `[]`, so we can use looping methods to access each object.
+
+Let's use a for...of loop to access each object literal in the Array, which, in this case, represents a voter's absentee ballot.
 
 **The output:**
 
-```js
+```javascript
 nc2024VoterInfo[0]
 ```
 
-#### Access object properties with dot notation
+```js
+for (let ballot in nc2024VoterInfo) {
 
-Use dot notation to access values of object properties: `nc2024VoterInfo[0].demographics`. It can be understood as follows:
+}
+```
+
+#### Access object properties with dot notation or Strings
+
+ThereUse dot notation to access values of object properties: `nc2024VoterInfo[0].demographics`. It can be understood as follows:
 
 1. `[0]` -- Access first object in Array
 2. `.demographics` -- Access demographics object
@@ -539,13 +547,13 @@ let ballotRequestMonthsPerCounty = nc2024SampleVotersUpdate.map(
 ballotRequestMonthsPerCounty
 ```
 
-## 1.9.3 Why Create Maps & Groups?
+## 3 Why Create Maps & Groups?
 
 In JS, an Array of Objects is great structures for meaningfully storing, structuring, and transforming datasets in JS. But, throughout the remainder of the chapter, we are going to learn JS and D3.js/Observable data types called ***maps***.
 
 Maps will help us more easily process the data into a structure that will help us ask new questions of the it, because they include built-in methods to help us aggregate the data into new groups and subgroups.
 
-## 1.9.4 JS Map() - Grouping Data by Fields
+## 4 JS Map() - Grouping Data by Fields
 
 JS has a built-in global data type that resembles the Array of Objects called `Map()` (see [MDN page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)).
 
@@ -699,7 +707,7 @@ ncVotersGroupedByParty
 
 The built-in JS Map is great, but there are some reasons that we should learn D3's version of the Map object called an InternMap. Thankfully, they're really close to the same thing with some upgraded features. Plus, we will be using InterMaps quite a bit, so let's take make sure we learn how to use them.
 
-## 1.9.5 D3.js InternMap() Easily Group Data
+## 5 D3.js InternMap() Easily Group Data
 
 <!-- Import the InternMap for use from D3's array lib/module -->
 ```js
@@ -771,7 +779,7 @@ Notice how InternMap() echoes JS's Map(), so if you learn one type of map, you w
 
 ![](./../assets/images/1-js/js-compare-map-internmap.png)
 
-## 1.9.6 Converting an Array of Objects to D3 InternMaps
+## 6 Converting an Array of Objects to D3 InternMaps
 
 We can easily create InternMap objects with the following three D3.js methods in the [d3-array](https://d3js.org/d3-array/group) code library: `d3.group` and `d3.rollup`.
 

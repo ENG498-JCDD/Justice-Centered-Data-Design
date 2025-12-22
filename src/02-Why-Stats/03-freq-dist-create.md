@@ -38,7 +38,7 @@ We're going to practice the following skills:
 I recommend reading the S4SJ book alongside the completion of coding exercises in this OF notebook. You can read and reference the appropriate documentation, when completing pertinent code exercises. Indeed, the Observable & D3.js documentation readings are going to be important to review and have available for reference to complete this chapter's follow-along exercises.
 
 1. ***Statistics for Social Justice***. Chapter 3 - "Frequency distributions and graphs" (pp. 25-44).
-    <p class="note">Skip the graphing sections. We'll learn those techniques in 2.3.</p>
+    <p class="note">Skip the graphing sections. We'll learn those techniques in 2.4.</p>
 2. **Observable's Documentation**: Skim to understand & bookmark for quick referencing.
     1. Framework's "[Table input](https://observablehq.com/framework/inputs/table)"
 3. **D3's Documentation**: Bookmark for quick referencing.
@@ -47,7 +47,7 @@ I recommend reading the S4SJ book alongside the completion of coding exercises i
 4. **MDN Javascript Guide**: Skim and bookmark for quick referencing:
     1. [Flatten nested arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) with `.flatMap()`
 
-## 2.3.1 Attach the data set
+## 1. Attach the data set
 
 Ok, let's attach and review the data with Observable's `FileAttachment()` and `Inputs.table()`.
 
@@ -74,7 +74,7 @@ Output the data as an interactive array of objects below:
 ncVotersAll
 ```
 
-## 2.3.2 Review the data as a table
+## 2. Review the data as a table
 
 We will be learning how to "read" large data sets with exploratory data analysis techniques, which include multiple visualizations. But, first, we shouldn't neglect to learn the simple table!
 
@@ -177,7 +177,7 @@ ENTER_YOUR_RESPONSE_HERE
 
 ENTER_YOUR_RESPONSE_HERE
 
-## 2.3.4 Calculate Absolute Grouped Frequencies with RFS Method
+## 3. Calculate Absolute Grouped Frequencies with RFS Method
 
 Alright, even though you read through some contextual information about the dataset, numerous questions remain unknown to us, since we don't know what values are represented in the data or their distribution. In short, we need a way to "read" the data. Indeed, we will need to learn a slightly new way to aggregate our data and calculate the absolute frequency of rejected, or not accepted, voter ballots per race category in a format that works with the `Inputs.table()` method.
 
@@ -244,7 +244,7 @@ In our case with the voter data, the computed value is the ***absolute frequency
 ]
 ```
 
-## 2.3.5 RFS 1. Roll it up with .rollups()!
+## 4. RFS 1. Roll it up with .rollups()!
 
 Ok, so we want to create a desired ***grouping*** of `ballot_rtn_status` > `race` with their respective absolute frequencies with `.rollups()`. Here's how we produce the above output with our attached `ncVotersAll` data.
 
@@ -278,7 +278,7 @@ const afStatusByRace = d3.rollups(
 afStatusByRace
 ```
 
-## 2.3.6 RFS 2. Flatten that `.rollups()` output with `.flatMap()`
+## 5. RFS 2. Flatten that `.rollups()` output with `.flatMap()`
 
 Rollups is great at quickly grouping flat data, such as an array of objects, by rolling it up per group and subsequently performing computations on each grouping. However, a set of nested arrays can be very hard to work with in code, because this output, which resembles an InternMap() in hierarchy, does not include helpful keys to self-document our code as we need access to different rolled up levels and entries.
 
@@ -424,7 +424,7 @@ After you have watched the above video, it is time for you to try this custom fu
 // Convert and output your variable here
 ```
 
-## 2.3.7 RFS 3. Sum it up with D3's .sum()!
+## 6. RFS 3. Sum it up with D3's .sum()!
 
 Let's learn and use D3's `.sum()`, because, while `.length()` worked for us to get the total of each instance in an array by finding its length, `d3.sum()` will help us do some more helpful and customizable `Number` work with addition.
 

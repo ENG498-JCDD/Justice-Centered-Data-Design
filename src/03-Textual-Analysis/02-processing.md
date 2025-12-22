@@ -1,4 +1,4 @@
-# Textual Data Processing with compromise.js
+# 3.2—Textual Data Processing with compromise.js
 
 <!-- IMPORTS -->
 ```js
@@ -260,13 +260,13 @@ const normedText = normedExcerpt.out('text')
 
 Thanks to compromise's .normalize() function, we can make some common finely tuned adjustments to our initial pass at the unstructured textual data. However, `compromise`'s NLP (Natural Language Processing) model may have yielded some additional processing needs to catch.
 
-### A note on accuracy
+### 2.1. A note on accuracy
 
 We'll talk more about compromise's NLP model in the next chapter. However, Kelly offers a [notebook that summarizes its accuracy performance, when compared to larger models](https://observablehq.com/@spencermountain/compromise-accuracy?collection=@spencermountain/nlp-compromise).
 
 Kelly notes how he tested the accuracy of `compromise` with a widely-accepted [Penn Treebank Subset Test](https://catalog.ldc.upenn.edu/LDC99T42). He ran a tagging comparison on ~2,500 sentences of the Penn Treebank, `compromise` was 87.8% alignment with Penn: 42,999 matched tags on 48,950 words across 2,535 test sentences.
 
-### Suggested next steps
+### 2.2. Suggested next steps
 
 To spot any additional patterns, some additional helpful steps to process textual data include:
 

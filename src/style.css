@@ -253,6 +253,7 @@ h2, h3, .card h3  { font-family: var(--headingFonts); }
 /* Sizing */
 h1                { font-size: 2.75rem; }
 h3, .card h3      { font-size: 1.1rem; }
+pre, code, tt     { font-size: 0.9rem; }
 .cite_small       { font-size: 0.8rem; }
 
 /* Weight */
@@ -263,6 +264,9 @@ h3, .card h3      { font-weight: bold; }
 h1                { margin: 1rem auto 4rem auto; }
 h2                { margin: 2.5rem auto 1rem auto; }
 h3, .card h3      { margin: 1.5rem auto 0.75rem auto; }
+
+/* Line Height */
+h1                { line-height: 1.25; }
 
 /* Per H* Element Type */
 h1 {
@@ -348,12 +352,14 @@ table {
 
 .table__container {
   background: var(--theme-background-alt);
-  border-left: 1px solid var(--accentShade6);
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  /* border-left: 1px solid var(--accentShade6); */
+  padding: 0.5rem;
 
   /* Table label para */
   &> p {
     font-family: var(--serif);
+    margin: 0;
+    padding: 0.5rem;
   }
 
   /* TABLE */
@@ -364,8 +370,8 @@ table {
     margin: 1rem 0 1.5rem 0;
     border-collapse: separate;
     border-spacing: 0;
-    border-top: 1px solid var(--accentShade6);
-    border-bottom: 1px solid var(--accentShade6);
+    /* border-top: 1px solid var(--accentShade6);
+    border-bottom: 1px solid var(--accentShade6); */
     font-variant-numeric: tabular-nums;
 
     /* Table Head */
@@ -1515,6 +1521,7 @@ video {
 }
 
 /* CUSTOM CODE FORMATTING */
+
 pre,
 .observablehq-pre-container,
 .observablehq--block {
@@ -1533,6 +1540,27 @@ pre,
   & > figure > svg {
     margin: auto;
   }
+}
+.observablehq-pre-container pre {
+  padding: 2rem 0;
+}
+
+/* If __ in <li>
+ * `observablehq-pre-container`
+ * .tip, .warning, .caution, .example
+ *
+*/
+li {
+
+  & > .observablehq-pre-container,
+  & > .note,
+  & > .tip,
+  & > .warning,
+  & > .caution,
+  & > .example {
+    margin: 0.5rem auto;
+  }
+
 }
 
 /* Interactive pre codeblocks */
@@ -1609,8 +1637,6 @@ code {
     padding: 1rem 0;
     max-width: none;
     font-size: 5rem;
-    font-weight: 1000;
-    line-height: 1;
 
     @media (min-width: 640px) {
       font-size: 4rem;

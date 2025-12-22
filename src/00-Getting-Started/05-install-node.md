@@ -33,4 +33,4 @@ In your terminal, do the following for both Mac and Windows OSes:
 
 ## Submission
 
-In Moodle, submit a screenshot image to Moodle, proving that you have installed Node.js and Yarn by printing our the version number in your terminal.
+Submit a screenshot image to Moodle, proving that you have installed Node.js and Yarn by printing our the version number in your terminal.

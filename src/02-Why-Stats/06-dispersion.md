@@ -1,4 +1,4 @@
-# Variability
+# 2.6—Variability
 
 ```js
 import {utcParse,utcFormat} from "d3-time-format";
@@ -8,7 +8,7 @@ import {getUniquePropListBy,oneLevelRollUpFlatMap,twoLevelRollUpFlatMap,threeLev
 
 How can we use our knowledge of central tendency, i.e., estimates of location, to ask questions about the data? In other words, how can we begin to define "normal" patterns across interested features, such as ballot requests status and race over time, so we can also judge what values of those features are not normal? And, is the central tendency of the data acceptable for the phenomena in question: mail-in ballot voting in North Carolina?
 
-In this notebook, we will learn how to "read" and explore any new dataset by comparing and contrasting the central tendencies with its dispersion, i.e., variability.
+In this chapter, we will learn how to "read" and explore any new dataset by comparing and contrasting the central tendencies with its dispersion, i.e., variability.
 
 ## Learning Objectives
 
@@ -20,7 +20,7 @@ We will learn how to implement the following in JavaScript.
 
 ## Normal Distribution & Standard Deviation
 
-This number provides us a region within which we expect a certain percentage of our overall data. The figure below visualizes the ideal normal distribution.
+***Standard Deviation*** is a number that provides us a region within which we expect a certain percentage of our overall data. The figure below visualizes the ideal normal distribution.
 
 <p class="figure-caption">By Ainali - Own work, CC BY-SA 3.0, (<a href="https://commons.wikimedia.org/w/index.php?curid=3141713" target="_blank" rel="noreferrer noopenner">Wikimedia</a>)</p>
 

@@ -59,7 +59,7 @@ I have provided links to helpful and appropriate documentation, which will prove
     3. Review: [Summarize data](https://d3js.org/d3-array/summarize#sum) with `.sum()`.
 5. JavaScript's .sort() method. See [MDN's JS Reference and examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort).
 
-## 2.4.1. Learning the Basics of Observable Plot
+## 1. Learning the Basics of Observable Plot
 
 In the video below, I review the essential parameters necessary for rendering a chart with your ***data (an Array of objects)*** and ***Observable's `Plot.plot()` function***.
 
@@ -335,7 +335,7 @@ The output should resemble the following video, but you may add any options that
 
 ```
 
-## 2.4.2. Line Chart: Plotting Our Grouped, Interval, Frequency Distributions
+## 2. Line Chart: Plotting Our Grouped, Interval, Frequency Distributions
 
 Ok! We've gone through some initial work with Observable's Plot code library. Let's return to our running scenario at *Protect Democracy*.
 

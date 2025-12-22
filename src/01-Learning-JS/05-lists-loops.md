@@ -1,5 +1,7 @@
 # 1.5 Lists (Arrays) and Loops
 
+<p style="display:none"></p>
+
 ## Start Your GH Workflow
 
 Remember, before you start anything else, always follow this GH methodological workflow:

@@ -1,5 +1,7 @@
 # 1.6 Strings
 
+<p style="display:none"></p>
+
 <p class="cite_small">
   Some content below is reused and modified from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="noopenner noreferrer">MDN's JS reference guide</a>.
 </p>

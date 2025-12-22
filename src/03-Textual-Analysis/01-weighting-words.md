@@ -1,4 +1,4 @@
-# Weighting Words with TF-IDF
+# 3.1—Weighting Words with TF-IDF
 
 ```js
 import * as tfidf from "tiny-tfidf";
@@ -14,6 +14,8 @@ const letterPrettyDateFormatter = d3.utcFormat("%A, %b %e, %Y")
 // formatter for letter URL: october-25-2025
 const urlDateFormatter = d3.utcFormat("%B-%-d-%Y")
 ```
+
+## Introduction
 
 Term Frequency-Inverse Document Frequency (TF-IDF) is a method for term weighting, where each of the documents in a collection is characterized using weights assigned to the words (or terms) present in it. This makes it possible to rank the documents according to their estimated relevance to a search query. These concepts are still relevant to modern search engines and other kinds of text analysis.
 
@@ -31,7 +33,7 @@ Define and implement the following 3 textual analysis measurements in JavaScript
 - Document Length
 - How to start applying the above 3 measurements together
 
-## 0. About the Data
+## 1. About the Data
 
 Before we begin, let's make sure we have some baseline context for our textual data.
 
@@ -87,7 +89,7 @@ let lettersByYear = Array.from(
 ``` -->
 
 
-## 1. Term Frequency
+## 2. Term Frequency
 
 The term frequency is the simple sum total number of times a given `t` term appears in `d` document.
 
@@ -288,7 +290,7 @@ let mappedTFs = d3.rollup(
 mappedTFs.get("trump")
 ``` -->
 
-## 2. Inverse Document Frequency (i.e., Collect Frequency)
+## 3. Inverse Document Frequency (i.e., Collect Frequency)
 
 Below shows us how to calculate the IDF, i.e., CF. Put simply, the IDF/CF is equal to the `log()` of `N`, the *total number of documents*, minus the `log()` of `n`, the *total number of documents with `t(i)` term in the collection*.
 
@@ -376,7 +378,7 @@ Let's consider this consequence of IDF weights with an example.
   </p>
 </div>
 
-## 3. Adjusting Weights Based on Document length
+## 4. Adjusting Weights Based on Document length
 
 Before we consider one way to start using TF-IDF analysis, we should be aware that the output model from the Corpus class constructor normalizes the results, based on the document lengths.
 
@@ -475,7 +477,7 @@ Plot.plot({
   What questions could you consider about the dataset and what to do to the data just by reviewing the document lengths?
 </p>
 
-## 4. How to Use TF-IDF Weighted Terms
+## 5. How to Use TF-IDF Weighted Terms
 
 Now, let's see how we might begin to use *IDF/CF* to our advantage with the `tiny-tfidf` `corpus`. Here are two possible approaches to start isolating patterns of interest.
 
@@ -812,45 +814,3 @@ In the next chapter, we will learn how to incorporate another set of textual ana
 
 1. **nGrams**: Instead of just 1 term at a time, we can group terms together, based on their collocation size.
 2. **Name-Entity Recognition**: We can isolate parts of speech, such as by nouns, verbs, people, location, etc.
-
-<!-- ## Test Cosine Similarity
-
-Calculate similarity
-
-```js
-const similarity = new tfidf.Similarity(corpus)
-```
-
-Get the matrix
-
-```js
-const matrix = similarity.getDistanceMatrix()
-```
-
-Create UMAP layout:
-
-```js
-const umapLayout = new UMAP({
-  metric: "precomputed",
-  nComponents: 2,
-  minDist: 0.2,
-  nNeighbors: 7
-}).fit(matrix.matrix)
-```
-
-```js
-umapLayout
-``` -->
-
-<!-- ```js
-Plot.plot({
-  marks: [
-    Plot.dot(
-      umapLayout,
-      {
-        x: d => (d[0]),
-        y: d => (d[1]),
-      }
-    )
-  ]
-}) -->

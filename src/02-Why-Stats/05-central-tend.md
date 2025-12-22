@@ -21,11 +21,11 @@ In this chapter, we are going to practice "reading" datasets by calculating *est
 
 1. *Statistics for Social Justice*. Chapter 4 - "Central Tendency and Variability." pp. 45-57.
 
-## Estimates of Location
+## 1. Estimates of Location
 
 One of the first steps with the dataset involves understanding the ***central tendency***: *What constitutes a "typical value" for each feature (variable) in the dataset*.
 
-### Key terms
+### 1.1. Key terms
 
 - **Mean**: The sum of all values divided by the number of values.
   - *Synonyms*: average, arithmetic mean
@@ -119,11 +119,11 @@ d3.range(minVal, maxVal, 0.1)
 
 ```
 
-## Example: Website Page Performance - First Contentful Paint (FCP)
+## 2. Example: Website Page Performance - First Contentful Paint (FCP)
 
 Let's use these central tendency methods with a grounded example. I attached a dataset (`digArchivePageTests`) about a webpage test that measures the loading performance of digital archive webpages. Specifically, digital archives related to Native Alaskan content.
 
-### About the archive site data
+### 2.1. About the archive site data
 
 - *90 digital archive websites*, which tested anywhere between *2-5 pages per site* to produce *399 pages total*
 - Test simulated a 3G mobile wireless connection with a moderately good bandwidth.
@@ -147,7 +147,7 @@ The content that gets painted first could be anything ranging from:
 - An `<img>` element
 - A background image set via CSS
 
-### FCP threshold criteria
+### 2.2. FCP threshold criteria
 
 The standard thresholds to help contextualize the numbers are seen below. These thresholds serve as guidelines for developers to understand where their site stands in terms of user-perceived load speed.
 
@@ -235,7 +235,7 @@ let digArchiveCentralTendencies = Array.from(
 digArchiveCentralTendencies
 ```
 
-## Exploratory Data Analysis of Central Tendency Measures
+## 3. Exploratory Data Analysis of Central Tendency Measures
 
 Let's exlore the milliseconds results of the FCP per digital archive.
 
@@ -250,7 +250,7 @@ const sumBad = d3.sum(digArchiveCentralTendencies, d => {
 })
 ```
 
-### What's the overall frequency distribution of mean FCP scores?
+### 3.1. What's the overall frequency distribution of mean FCP scores?
 
 Remember that histograms help us see the distribution along set intervals. In this case the metric of FCP has a 3000ms threshold, where scores below 3000 are considered Good & Ok, while Bad scores include everything above 3000ms.
 
@@ -278,7 +278,7 @@ Plot.plot({
 })
 ```
 
-### What are the CT FCP results per hostname/website?
+### 3.2. What are the CT FCP results per hostname/website?
 
 Let's look at the results, as grouped by the `hostname`, i.e., the website.
 
@@ -334,7 +334,7 @@ Plot.plot({
 })
 ```
 
-## How can we emphasize the distribution of those FCP scores?
+## 4. How can we emphasize the distribution of those FCP scores?
 
 You may have noticed how there are some websites in the dataset with some atypical values. While the bar-dot chart gave us the opportunity to see some possible atypical values, we can alternatively use Observable's faceting plots to help us see the distribution in a different way.
 
