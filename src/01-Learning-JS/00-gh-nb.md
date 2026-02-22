@@ -25,6 +25,9 @@ Sometimes you will need to display code in the OF notebook, because you want to 
 
 - **Inline Code**: Write code content in-between two backticks, i.e., backquotes, graves, or grave accents: <code>``</code>
     - **EXAMPLE**: `let inlineExample = "Inline code for reading display"`
+    
+    ``javascript
+    let multilineExample1 = "Inline code for reading display"
 - **MultiLine Code**: Write code content in-between two sequences of 3 backticks.
     1. <code>```javascript</code>: The first sequence of 3 backticks and the statement of ***javascript*** opens what's called a ***preformatted*** element.
     2. <code>```</code>: The second sequence of 3 backticks closes the scope of the preformatted element:
@@ -39,6 +42,7 @@ Sometimes you will need to display code in the OF notebook, because you want to 
         let multilineExample2 = " for display"
 
         let joinMultlineExample = multilineExample1 + multilineExample2
+        I show up on the page
         ```
 
         <br>
@@ -50,7 +54,11 @@ Sometimes you will need to display code in the OF notebook, because you want to 
         let multilineExample2 = " for display"
 
         let joinMultlineExample = multilineExample1 + multilineExample2
-        \`\`\`</pre>
+        \`\`\`</pre> console.log("I do NOT show up on the page")
+      
+      
+
+        
 
 ## 1.0.3 Practicing the Github development methodology
 
@@ -95,9 +103,11 @@ Here's that process again for you:
 
 1. Create a multiline JS codeblock that renders to the page with the "javascript" keyword after the first 3 backticks.
 2. Inside the "javascript" codeblock, add the following text `// I will show up on the page`.
+```java script `//I will show up on the page`
     - **NOTE**: This codeblock should render on the locally hosted page.
 3. Create another multiline JS codeblock that is executable by using the "js" keyword after the first 3 backticks.
 4. Inside the "js" codeblock, add the following text `console.log("I do NOT show up on the page")`.
+```js `console.log("i do NOT show up on the page")`
     - **NOTE**: This codeblock should NOT render on the locally hosted page. I'll show where to find it in class. `:-)`
 
 ## Conclusion
@@ -124,5 +134,12 @@ Techniques learned and practiced include:
     5. Submit the PR link in Moodle, when you're ready.
 
 ## Submission
+
+re-do submit!
+one more attempt?
+
+```js
+///pls?
+```
 
 Submit the PR link in Moodle, when you're ready.
