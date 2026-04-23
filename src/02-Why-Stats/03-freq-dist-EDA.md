@@ -18,17 +18,22 @@ Remember, before you start anything else, always follow this GH methodological w
 
 Since this is an extended exercise of Chapter 2.3, we're going to practice the same following skills with *one new objective to integrate percentages*:
 
-- **Statistics**:
-  1. Understand **descriptive statistics**, **variables**, *values*, and *arrays*.
-  2. Understand and learn how to compute 3 types of frequency distributions:
-      1. Absolute
-      2. Grouped
-      3. ***Percentages*** - New objective
-- **JavaScript**:
-  1. Practice variable assignments, loops, conditions and functions in JS.
-  2. Practice fetching, i.e., "attaching" data sets with `FileAttachment()`.
-  3. Practice the RFS method to compute the 3 of the 4 types of frequency distributions with JS/D3.
-  4. Practice writing exportable functions in a local file to import and use in our notebooks.
+### Statistics
+
+1. Understand **descriptive statistics**, **variables**, *values*, and *arrays*.
+2. Understand and learn how to compute 3 types of frequency distributions:
+    1. Absolute
+    2. Grouped
+    3. ***Percentages*** - New objective
+
+### JavaScript
+
+Practice the following skills from unit 1:
+
+1. "Attaching" data sets with `FileAttachment()`;
+2. Variable assignments, loops, conditions and functions;
+3. The Rollup & Flatten method to compute the 3 of the 4 types of frequency distributions with JS/D3; and
+4. Writing exportable functions in a local file to import and use in our notebooks.
 
 ## Readings
 
@@ -74,7 +79,7 @@ In the end, our new dataset to address this angle should include an array wherei
 
 ### Plan out data transformation
 
-Can you see the problem yet with our needs? We have the race category in the original dataset, but nothing else is available in the original attached data assigned to `ncVotersAll`.
+Can you see the problem yet with our needs? We have the race category in the original dataset, but nothing else is available in the original attached data assigned to `ncBallotsAll`.
 
 Thankfully, we know and have written code to conduct the RFS method across two grouped levels of data. We also know that we can convert dates that are in the String data type to JS Date() objects with D3 date parser methods. Once we create and add date objects, then we can use a D3 date formatter to isolate a week number for each voter ballot entry in the dataset. Based on these data needs, here's a basic to-do list for our coding work:
 
@@ -99,7 +104,7 @@ Roll up your sleeves and let's start coding this new data!
 
 Let's attach and render the dataset CSV file called `nc_absentee_mail_2024_no_dropped_dupes.csv` out to the page, so we can reference it, when needed.
 
-Let's assign the attached data to a constant variable called `ncVotersAll`.
+Let's assign the attached data to a constant variable called `ncBallotsAll`.
 
 ```javascript
 // Attach with this codeblock
@@ -110,12 +115,12 @@ Let's assign the attached data to a constant variable called `ncVotersAll`.
 </p>
 
 ```javascript
-ncVotersAll
+ncBallotsAll
 ```
 
 ## E2. Convert String Dates to Date() Objects
 
-Think back to chapter **1.7 - Dates & Time**. We learned how date information in datasets are often tricky to work with, so we need to learn how to convert date values to Date() objects, which we can do easily with D3.js' date parsers and formatters.
+Refer back to chapter **1.7 - Dates & Time**. We learned how date information in datasets are often tricky, since dates are often saved in non-standard formats. Consequently, we need to learn how to convert date values to Date() objects, which we can do easily with D3.js' date parsers and formatters.
 
 <p class="tip">
   Here is D3's list of <a href="https://d3js.org/d3-time-format#locale_format" target="_blank" rel="noopenner noreferrer">time format specifiers from their user doc page</a>.
@@ -133,15 +138,13 @@ Copy and paste the code and comments in the larger codeblock below into your `ut
     </p>
 3. This may seem strange, but I want you to wrap your `utcFormat()` inside of a `Number()` method. `Number()` will convert the formatted week number String type to a Number type. The result of steps 2 and 3 should resemble the following:
     ```javascript
-
     // Executes utcFormat() first, then Number().
     Number(utcFormat("SPECIFIER_STRING_IN_HERE"))
-
     ```
     <p class="warning">Be sure that you double check your open and close parentheses.</p>
 4. Once you create your date parser and formatter, you can follow the directions inside of the future exportable function that uses `.map()` to create the desired new properties.
     <p class="tip">
-      Remember that JS' <code>.map()</code> is simply a fancy for loop, which we learned in <a href="/01-Learning-JS/09-objs-maps.html#iterate-iterables-with-map" target="_blank" rel="noreferrer noopenner">Chapter 1.9 - Objects & Maps</a>. In our case with <code>ncVotersAll</code>, each object in the array represents one mail-in voter's ballot.
+      Remember that JS' <code>.map()</code> is simply a fancy for loop, which we learned in <a href="/01-Learning-JS/09-objs-maps.html#iterate-iterables-with-map" target="_blank" rel="noreferrer noopenner">Chapter 1.9 - Objects & Maps</a>. In our case with <code>ncBallotsAll</code>, each object in the array represents one mail-in voter's ballot.
     </p>
 
 Ok, the code below has already been added to the `utils.js` file, so be sure to open the `utils.js` file to start your importable coding work!
@@ -224,18 +227,18 @@ Import the `mapDateObject` function in the `import` statement at the top of this
 
 ```javascript
 // Convert so you can test your imported function as you develop it
-const ncVotersAllUpdated = mapDateObject(ncVotersAll, "ENTER THE DATEFIELD HERE")
+const ncBallotsAllUpdated = mapDateObject(ncBallotsAll, "ENTER THE DATEFIELD HERE")
 ```
 
 Ok, now convert the below codeblock to an exectuable one, so you can view the output.
 
 <p class="codeblock-caption">
-  Interactive output of <code>ncVotersAllUpdated</code> with new date properties:
+  Interactive output of <code>ncBallotsAllUpdated</code> with new date properties:
 </p>
 
 ```javascript
 // Convert to output
-ncVotersAllUpdated
+ncBallotsAllUpdated
 ```
 
 ## E3. Conduct RFS with threeLevelRollUpFlatMap() function

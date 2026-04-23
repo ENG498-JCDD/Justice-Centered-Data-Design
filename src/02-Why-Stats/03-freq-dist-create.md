@@ -13,7 +13,7 @@ Remember, before you start anything else, always follow this GH methodological w
 
 ## Overview
 
-In this chapter, we are going to learn about descriptive statistics related to frequencies and distributions of  the data. Descriptive statistics is essential to any data-driven work, because its a suite of techniques that will help you "read" and interpret large datasets. Indeed, we need to learn how to more quickly understand thousands and thousands of rows of information with sometimes dozens of features/columns. Descriptive statistics is one suite of tools to do this work.
+In this chapter, we are going to learn about descriptive statistics related to frequencies and distributions of data. Descriptive statistics is essential to any data-driven work, because its a suite of techniques that will help you "read" and interpret large datasets. Indeed, we need to learn how to more quickly understand thousands and thousands of rows of information with sometimes dozens of features/columns. Descriptive statistics is one suite of tools that support this interpretive labor.
 
 We are going to follow a different case than the social worker, June, in *Statistics for Social Justice*. We are going to continue working with the 2024 NC absentee voter data.
 
@@ -56,22 +56,25 @@ Again, we are going to continue working with the 2024 NC absentee voter CSV file
 ## E1. Attach the data
 
 1. Convert the below codeblocks to executable `js` codeblocks.
-2. Assign the data to a variable named `ncVotersAll`.
+2. Assign the data to a variable named `ncBallotsAll`.
 3. Render it to the page in a separate codeblock.
 
 ```javascript
-// FileAttachment() code here assigned to `ncVotersAll`
+/**
+ * Use FileAttachment() to assign the dataset
+ * to a constant variable: `ncBallotsAll`.
+**/
 ```
 
 Output the data as an interactive array of objects below:
 
 <p class="codeblock-caption">
-  Interactive output of full data set in <code>ncVotersAll</code>
+  Interactive output of full data set in <code>ncBallotsAll</code>
 </p>
 
 ```javascript
-// Convert to render on page
-ncVotersAll
+// Convert to render first 10 rows onto the page
+ncBallotsAll.slice(0,10)
 ```
 
 ## 2. Review the data as a table
@@ -80,12 +83,16 @@ We will be learning how to "read" large data sets with exploratory data analysis
 
 Observable has a suite of modules called **Inputs**. We're going to learn how to use [Observable's Inputs.table()](https://observablehq.com/framework/inputs/table) method to render the attached data as a table. In its most basic form, it expects a flat array of objects with properties, which is what `FileAttachment()` renders for us.
 
+Be sure to convert the codeblock to an exectuable `js` codeblock.
+
 ```javascript
 // Most basic Inputs.table()
-Inputs.table(ncVotersAll)
+Inputs.table(ncBallotsAll)
 ```
 
-Notice how the table "lazily" loads data as you scroll down the data, so your browser doesn't explode!
+<p class="note">
+  Notice how the table "lazily" loads data as you scroll down the data, so your browser doesn't explode!
+</p>
 
 ## E2. Add custom features for `Inputs.table()`
 
@@ -136,7 +143,7 @@ Ok, now I want you to put all of those pieces together in your own `Inputs.table
 // Insert your table here
 Inputs.table(
   // The array of objects
-  ncVotersAll,
+  ncBallotsAll,
   {
     // enter each customizing property in this object
   }
@@ -246,11 +253,11 @@ In our case with the voter data, the computed value is the ***absolute frequency
 
 ## 4. RFS 1. Roll it up with .rollups()!
 
-Ok, so we want to create a desired ***grouping*** of `ballot_rtn_status` > `race` with their respective absolute frequencies with `.rollups()`. Here's how we produce the above output with our attached `ncVotersAll` data.
+Ok, so we want to create a desired ***grouping*** of `ballot_rtn_status` > `race` with their respective absolute frequencies with `.rollups()`. Here's how we produce the above output with our attached `ncBallotsAll` data.
 
 1. Assign the output of d3.rollups() to a variable. We'll use the desired output as a guide for the name: `afStatusByRace`.
 2. Within d3.rollups(), add our parameters separated by commas:
-    1. Add first param: our array of objects: `ncVotersAll`.
+    1. Add first param: our array of objects: `ncBallotsAll`.
     2. Add second param: the computation to perform on the rolled up data. In this case, we want the absolute frequency of ballot statuses per race.
 
 <!-- Example rollups() -->
@@ -261,7 +268,7 @@ Ok, so we want to create a desired ***grouping*** of `ballot_rtn_status` > `race
  *   [ ["key", [entries as objects]], ... ]
 **/
 const afStatusByRace = d3.rollups(
-  ncVotersAll,
+  ncBallotsAll,
   v => v.length, // length of leaf node: ballot_rtn_status
   d => d.race,
     d => d.ballot_rtn_status
@@ -354,7 +361,7 @@ In this second video, I explain the code inside of the custom `oneLevelRollUpFla
   <source src="./../assets/vids/02-why-stats/02-rollups-flatMap-sumup-2-oneLevel.mp4" type="video/mp4" />
 </video>
 
-## E4. Import and use `oneLevelRollUpFlatMap()` on `ncVotersAll`
+## E4. Import and use `oneLevelRollUpFlatMap()` on `ncBallotsAll`
 
 Ok, now that you have watched the above video about the `oneLevelRollUpFlatMap()` function. Import it from the `./utils/utils.js` file in the codeblock below.
 
@@ -366,10 +373,10 @@ import {PUT_ANY_FUNCTIONS_IN_HERE, SEPARATE_MORE_THAN_ONE, WITH_COMMAS} from "en
 
 Now, see if it worked!
 
-Use the imported function in the below codeblock to rollup and flatten `ncVotersAll` by (1) `race` and (2) `ballot_rtn_status`.
+Use the imported function in the below codeblock to rollup and flatten `ncBallotsAll` by (1) `race` and (2) `ballot_rtn_status`.
 
 ```javascript
-// Convert and use `oneLevelRollUpFlatMap()` on `ncVotersAll`
+// Convert and use `oneLevelRollUpFlatMap()` on `ncBallotsAll`
 const byRaceAndBallotStatus = ADD_FUNCTION_HERE
 ```
 
@@ -400,7 +407,7 @@ Ok, now you try this custom function with a different variable from the dataset.
 // Convert and output your variable here
 ```
 
-## E6. Import and use `twoLevelRollUpFlatMap()` on `ncVotersAll`
+## E6. Import and use `twoLevelRollUpFlatMap()` on `ncBallotsAll`
 
 If your code worked at one level, let's learn how to perform the same operations across two levels.
 

@@ -191,16 +191,30 @@ export default {
       ]
     },
     // CLASS DEMOS
-    {
-      name: "Class Demos",
-      open: false,
-      pages: [
-        {
-          name: "Eyes on the Prize!",
-          path: "/Class-Demos/00-eotp"
-        },
-      ]
-    },
+    // {
+    //   name: "Class Demos",
+    //   open: false,
+    //   pages: [
+    //     {
+    //       name: "Eyes on the Prize!",
+    //       path: "/Class-Demos/00-eotp"
+    //     },
+    //     {
+    //       name: "TEST",
+    //       path: "/02-Why-Stats/04--EXAMPLE"
+    //     },
+    //   ]
+    // },
+    // DATA COLLECTION
+    // {
+    //   name: "Data Collection",
+    //   open: false,
+    //   pages: [
+    //     {name: "Methods Overview", path: "/xx-Data-Collection/00-methods-overview"},
+    //     {name: "Web Scraping", path: "/xx-Data-Collection/01-scraping"},
+    //     {name: "Exemption & Consent", path: "/xx-Data-Collection/02-exemption-and-consent"},
+    //   ]
+    // },
   ],
 
   // Content to add to the head of the page, e.g. for a favicon:

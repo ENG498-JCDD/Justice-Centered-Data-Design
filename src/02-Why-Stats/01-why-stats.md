@@ -17,7 +17,6 @@ The first three readings set us down this inventive path for the future of commu
 
 1. The S4SJ book provides us with the initial structure of concepts and statistical techniques to adapt into our own ***structural perspective*** to carry into and inform TPC.
 2. Lindgren, Gerdes, and Lawrence discuss and define what they call a social justice ethic. They briefly survey the social justice turn in TPC, and its exigence in response to the myriad ways ethics have been conceptualized and operationalized in TPC's past. This book chapter can help us gain a sense for where TPC has been and where it is going with regards to social justice work.
-3. Graham et al's article can serve as an initial bridge for us to see an earlier work that introduces a mixed-methods approach to TPC scholarly research. While I don't expect us to fully understand the entirety of their statistical research method yet, I hope that we can begin to discuss and understand their argument that blends a bit of both the S4SJ structural perspective and TPC's future with a social justice ethic.
 
 With these goals for the texts in mind, please respond to the questions herein about the assigned readings.
 
@@ -35,7 +34,6 @@ With these goals for the texts in mind, please respond to the questions herein a
     <p class="note">Read up to *Overview of the Book* on p. 9.</p>
 2. *Statistics for Social Justice*. Chapter 2 - "The history of empiricism." pp. 13-24.
 3. Lindgren, C., Gerdes, J., & Lawrence, H. (2025). The future of ethics and social justice. In D. Ross (Ed.), *The Routledge Handbook of Ethics in Technical and Professional Communication (pp. 420–430)*. Routledge. [https://doi.org/10.4324/9781003434375-46](https://doi.org/10.4324/9781003434375-46)
-4. Graham, S. S., Kim, S.-Y., DeVasto, D. M., & Keith, W. (2015). Statistical Genre Analysis: Toward big data methodologies in Technical Communication. *Technical Communication Quarterly*, 24(1), 70–104.
 
 ## 1. Questions about "Why statistics are important"
 
@@ -107,32 +105,15 @@ Your_response_here
 
 Your_response_here
 
-## 4. Questions About "Statistical Genre Analysis" (SGA)
 
-### 4.1. On "big" data
 
-**Question**: How do Graham et al define and discuss what constitutes "big" data? How does their definition differ from what you have heard before you read this article?
-
-Your_response_here
-
-### 4.2. On SGA
-
-**Question**: Summarize the following parts of SGA:
-
-1. What TPC problems SGA addresses,
-2. What data they used to demonstrate its potential,
-3. What questions SGA data and methods enable TPC to ask, and
-4. What methods it uses to do so.
-
-Your_response_here
-
-## 5. "Science is a social endeavor."
+## 4. "Science is a social endeavor."
 
 **Question**: Discuss what this statement means to you. Then, discuss any connections, confusion, and/or questions that you recognize with a SJ ethic and structural perspective?
 
 Your_response_here
 
-## 6. Translating the structural approach into TPC / Other Humanities Fields
+## 5. Translating the structural approach into TPC
 
 **Question**: After considering all of these texts -- their exigencies, propositions, and methods -- translate Mullaly's broader definition of the *structural approach* and Moreau's *practice methods* in social work into the domain of TPC or humanist domain of work by putting them into conversation with Lindgren, Gerdes, and Lawrence's SJ ethic and Graham et al's statistical genre analysis. In other words, begin to develop your own structural perspective and set of practices that translates Moreau's 5 practices. Finally, add one new practice approach specific to TPC/your domain.
 

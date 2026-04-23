@@ -93,19 +93,22 @@ export const mapDateObject = (data, dateField) => {
 export const oneLevelRollUpFlatMap = (data, level1Key, countKey) => {
 
   // 1. Rollups on one level
-  const colTotals = rollups(
+  const colTotals = rollup(
     data,
     (v) => v.length, // Count length of leaf node
-    (d) => d[level1Key] // d["race"]
+    (d) => d[level1Key] // e.g., d["race"]
   )
 
   // 2. Flatten back to array of objects
-  const flatTotals = colTotals.flatMap((e) => {
-    return {
-      [level1Key]: e[0],
-      [countKey]: e[1]
+  const flatTotals = Array.from(
+    colTotals,
+    ([key1, value1]) => {
+      return {
+        [level1Key]: key1,
+        [countKey]: value1
+      }
     }
-  })
+  )
 
   // 3. Return the sorted totals
   return flatTotals
@@ -124,7 +127,7 @@ export const oneLevelRollUpFlatMap = (data, level1Key, countKey) => {
 export const twoLevelRollUpFlatMap = (data, level1Key, level2Key, countKey) => {
 
   // 1. Rollups on 2 nested levels
-  const colTotals = rollups(
+  const colTotals = rollup(
     data,
     (v) => v.length, // Count length of leaf node
     (d) => d[level1Key], // Accessor at 1st level
@@ -132,7 +135,56 @@ export const twoLevelRollUpFlatMap = (data, level1Key, level2Key, countKey) => {
   )
   /**
    * OOPS! colTotals is NOT a flat array of objects!
-   */
+  **/
+
+  // 2. Flatten 1st grouped level back to array of objects
+  const flatTotals = Array.from(
+    colTotals, // New rolled up grouping
+    ([key1, valuesLevel1]) => {
+
+      // Flatten 2nd grouped level
+      const flatLevels = Array.from(
+        valuesLevel1,
+        ([key2, countValue]) => {
+
+          // Return fully populated object
+          return {
+            [level1Key]: key1,
+            [level2Key]: key2,
+            [countKey]: countValue
+          }
+        }
+      )
+
+      // 3. Return flattened array of objects
+      return flatLevels
+    }
+  )
+
+  // 3. Return the sorted totals
+  return flatTotals
+}
+
+/** threeLevelRollUpFlatMap()
+ * Groups & counts data by two levels
+ * @params
+ *    - data: Array of objects. Data to rollup and sum up.
+ *    - level1Key: String. Name of key for 1st level.
+ *    - level2Key: String. Name of key for 2nd level.
+ *    - countKey: String. Provided key name for new property of calculated Number value
+ * @return
+ *    - Flattened array of objects with 2 levels and this group's absolute frequency as "Count" property
+**/
+export const threeLevelRollUpFlatMap = (data, level1Key, level2Key, level3Key, countKey) => {
+
+  // 1. Rollups on 2 nested levels
+  const colTotals = rollups(
+    data,
+    (v) => v.length, //Count length of leaf node
+    (d) => d[level1Key], //Accessor at 1st level
+      (d) => d[level2Key], //Accessor at 2nd level
+        (d) => d[level3Key], //Accessor at 3rd level
+  )
 
   // 2. Flatten 1st grouped level back to array of objects
   const flatTotals = colTotals.flatMap((l1Elem) => {
@@ -146,31 +198,37 @@ export const twoLevelRollUpFlatMap = (data, level1Key, level2Key, countKey) => {
       // 2.2.1 Assign level 2 key
       let l2KeyValue = l2Elem[0]
 
-      // 2.2.2 Return fully populated object
-      return {
-        [level1Key]: l1KeyValue,
-        [level2Key]: l2KeyValue,
-        [countKey]: l2Elem[1]
-      }
+      // 2.3.1 Flatten third level
+      const flat3Levels = l2Elem[1].flatMap((l3Elem) => {
+
+        // 2.2.1 Assign level 2 key
+        let l3KeyValue = l3Elem[0]
+
+        // 2.2.2 Return fully populated object
+        return {
+          [level1Key]: l1KeyValue,
+          [level2Key]: l2KeyValue,
+          [level3Key]: l3KeyValue,
+          [countKey]: l3Elem[1]
+        }
+
+      })
+
+      return flat3Levels
     })
 
     // 3. Return flattened array of objects
     return flatLevels
   })
+
   // 3. Return the sorted totals
   return flatTotals
 }
 
-export const threeLevelRollUpFlatMap = (data, level1Key, level2Key, level3Key, countKey) => {
+export const anyLevelFlatMap = (rolledData, levelKeysArray, countKey) => {
 
   // 1. Rollups on 2 nested levels
-  const colTotals = rollups(
-    data,
-    (v) => v.length, //Count length of leaf node
-    (d) => d[level1Key], //Accessor at 1st level
-      (d) => d[level2Key], //Accessor at 2nd level
-        (d) => d[level3Key], //Accessor at 3rd level
-  )
+  numOfLevels = levelKeysArray.length
 
   // 2. Flatten 1st grouped level back to array of objects
   const flatTotals = colTotals.flatMap((l1Elem) => {

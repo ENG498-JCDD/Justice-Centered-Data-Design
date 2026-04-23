@@ -315,6 +315,7 @@ Take the illustrative dot chart of our corpus below. The IDF weight is higher wh
 
 Here's how we can illustrate this with **CF thresholds**. See the notebook and change the `maxCF` and `nTerms` constant variables.
 
+<!-- Declare and computre `idfResults` -->
 ```js
 const maxCF = 1
 const nTerms = 1000
@@ -366,7 +367,7 @@ Let's consider this consequence of IDF weights with an example.
 
 <div class="example">
   <p>
-    Think about the document frequency for the word <strong>said</strong> versus the word <strong>vaccine</strong>. In Richardson's corpus of letters:
+    Think about the document frequency for the word <strong>said</strong> versus the word <strong>vaccine</strong>. In the corpus of Richardson's letters:
   </p>
   <ul>
     <li><strong>said</strong> occurs in 1641 documents,
@@ -488,7 +489,7 @@ In the table below, we can compare, for every letter date, the most frequent ter
 Recall how the term, ***trump***, occurs in 1580 letters of the total 2074 in the corpus. Consequently, the TF-IDF weighting demotes ***trump*** from being the top term for many letters. The same is true of other top frequency words, such as ***president*** or ***biden*** or ***republican***, etc.
 
 <p class="question">
-  Take a moment and search some terms. What do you notice about the results, when you compare the top TF term with the top TIFIDF weighted term?
+  Take a moment and search some terms in the <em>Term Frequency</em> (TF) column. Compare the top TF term with the top TIFIDF weighted term.<br><br>What insights can you gain by combining the top TF with the top TFIDF results that you couldn't glean without the TFIDF result?
 </p>
 
 <!-- Get top terms from each document in corpus -->
