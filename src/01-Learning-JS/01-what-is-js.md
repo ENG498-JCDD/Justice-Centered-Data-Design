@@ -66,7 +66,7 @@ In JS, you write with data. Computers need to be told what to do with the data o
 
 #### `var`
 
-Declares a variable, optionally initializing it to a value.
+Declares a variable and optionally initializes it to a value.
 
 See [MDN Example of var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var).
 

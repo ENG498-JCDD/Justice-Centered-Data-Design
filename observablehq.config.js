@@ -25,56 +25,25 @@ export default {
         {name: "0.3 Command Line", path: "/00-Getting-Started/03-cmd-line"},
         {name: "0.4 Reading & Writing Code Files", path: "/00-Getting-Started/04-reading-files"},
         {name: "0.5 Installing Node.js", path: "/00-Getting-Started/05-install-node"},
-        {name: "0.6 Conclusion", path: "/00-Getting-Started/06-conclusion"}
+        {name: "0.6 Practicing the Workflow", path: "/00-Getting-Started/06-gh-nb"},
+        {name: "0.7 Conclusion", path: "/00-Getting-Started/07-conclusion"}
       ]
     },
     // 1. JS FUNDAMENTALS
     {
-      name: "1. JS Fundamentals",
+      name: "1. JavaScript Fundamentals",
       open: false,
       pages: [
-        {
-          name: "1.0. GH Methodology & Notebook Syntax",
-          path: "/01-Learning-JS/00-gh-nb"},
-        {
-          name: "1.1. What is JS",
-          path: "/01-Learning-JS/01-what-is-js"},
-        {
-          name: "1.2. Data Types",
-          path: "/01-Learning-JS/02-data-types"
-        },
-        {
-          name: "1.3. Operators",
-          path: "/01-Learning-JS/03-operators"
-        },
-        {
-          name: "1.4. Conditionals",
-          path: "/01-Learning-JS/04-conditionals"
-        },
-        {
-          name: "1.5. Lists & Loops",
-          path: "/01-Learning-JS/05-lists-loops"
-        },
-        {
-          name: "1.6. Strings",
-          path: "/01-Learning-JS/06-strings"
-        },
-        {
-          name: "1.7. Dates & Time",
-          path: "/01-Learning-JS/07-dates"
-        },
-        {
-          name: "1.8. Data Formats & Loading",
-          path: "/01-Learning-JS/08-load-data"
-        },
-        {
-          name: "1.9. Objects & Maps",
-          path: "/01-Learning-JS/09-objs-maps"
-        },
-        {
-          name: "1.10. Functions",
-          path: "/01-Learning-JS/10-functions"
-        },
+        {name: "1.1 What is JS", path: "/01-Learning-JS/01-what-is-js"},
+        {name: "1.2 Data Types", path: "/01-Learning-JS/02-data-types"},
+        {name: "1.3 Operators", path: "/01-Learning-JS/03-operators"},
+        {name: "1.4 Conditionals", path: "/01-Learning-JS/04-conditionals"},
+        {name: "1.5 Lists & Loops", path: "/01-Learning-JS/05-lists-loops"},
+        {name: "1.6 Strings", path: "/01-Learning-JS/06-strings"},
+        {name: "1.7 Dates & Time", path: "/01-Learning-JS/07-dates"},
+        {name: "1.8 Data Formats & Loading", path: "/01-Learning-JS/08-load-data"},
+        {name: "1.9 Objects & Maps", path: "/01-Learning-JS/09-objs-maps"},
+        {name: "1.10 Functions", path: "/01-Learning-JS/10-functions"},
       ]
     },
     // 2. STATS for SJ

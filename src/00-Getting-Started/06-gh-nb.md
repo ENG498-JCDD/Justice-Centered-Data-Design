@@ -1,8 +1,13 @@
-# 1.0-Reviewing the GH Methodology & Learning to Write JS in Observable
+# 0.6-Practicing the Workflow
 
-Before we move forward, let's be sure we remember how to practice using our code-writing tools to work for us, rather than become impediments to our success.
+Before we move forward, let's be sure we remember how to practice using our code-writing tools to work for us, rather than become impediments to our success. In this chapter, you will practice the following tools within the Observable Framework workflow:
 
-## 1.0.1 Running your Framework environment
+1. Opening VS Code and Github Desktop
+2. Running Observable Framework with Node.js via the yarn package manager tool in the VS Code terminal.
+3. Making basic code file changes in this file.
+4. Practicing version control with Github Desktop, i.e. our Github methodology.
+
+## 0.6.1 Running the Observable Framework Environment
 
 When you develop your OF notebooks, you'll need to remember how to setup your programming environment, i.e., the set of technologies that we need to run altogether to make our notebooks render our content.
 
@@ -15,7 +20,7 @@ When you develop your OF notebooks, you'll need to remember how to setup your pr
 
 If any of these steps do not work, please post your issue to the Help forum.
 
-## 1.0.2 Fundamental Observable Framework Syntax
+## 0.6.2 Fundamental Observable Framework Syntax
 
 Before we learn how to code JS in this chapter, you need to learn a few basic syntax forms that will help you write code that executes in your OF notebook versus code that you want to display in the OF notebook.
 
@@ -52,7 +57,7 @@ Sometimes you will need to display code in the OF notebook, because you want to 
         let joinMultlineExample = multilineExample1 + multilineExample2
         \`\`\`</pre>
 
-## 1.0.3 Practicing the Github development methodology
+## 0.6.3 Practicing the Github development methodology
 
 We also need to make sure that we practice our Github development methodology, which includes the following high-level steps:
 
@@ -100,7 +105,7 @@ Here's that process again for you:
 4. Inside the "js" codeblock, add the following text `console.log("I do NOT show up on the page")`.
     - **NOTE**: This codeblock should NOT render on the locally hosted page. I'll show where to find it in class. `:-)`
 
-## Conclusion
+## 0.6.4 Conclusion
 
 Techniques learned and practiced include:
 
@@ -125,4 +130,4 @@ Techniques learned and practiced include:
 
 ## Submission
 
-Submit the PR link in Moodle, when you're ready.
+If applicable, submit the PR link to your instructor, when you're ready.
