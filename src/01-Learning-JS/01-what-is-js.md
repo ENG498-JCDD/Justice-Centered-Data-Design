@@ -186,17 +186,24 @@ There are other conventions and rules, but we don't need to belabor them right n
     </video>
 
 ```javascript
-// Convert this into a multiline comment
-// that includes your name, date,
-// and top 3 favorite foods, where
-// each set of info should be on a new line.
-
+/*My name is Hail
+* I was born on 4/14
+* Top 3 foods are:
+* Chicken
+* Sushi
+* Zaxbys
+*/
+let faveFood1 = Chicken
+let faveFood2 = Sushi
+let faveFood3= Zaxbys
 /**
  * 1. Replace the value in-between the
  *    double quotes for each variable below
  *    with your favorite foods listed above.
  *      Example:
- *      "Enter_#1_Favorite_Food_Here" --> "Pizza"
+ *      "var = sesameChicken"
+ *      "var = Sushi"
+ *      "var = Zaxbys"
  *
  * 2. Rename the variable names, (e.g., _faveFood1_),
  *    appropriately with camelCase scheme.
@@ -205,22 +212,23 @@ There are other conventions and rules, but we don't need to belabor them right n
  *    that will make sure each favorite food is
  *    logged to the correct place in the console.
 **/
-___ _faveFood1_ = "Enter_#1_Favorite_Food_Here"
-___ _faveFood2_ = "Enter_#2_Favorite_Food_Here"
+faveFood1 = "Chicken"
+faveFood2 = "Sushi"
+faveFood3 = "_Zaxbys_"
 
 console.log(
   "Ok, so y'all know that my #1 favorite food is ",
-  _faveFood1_,
-  ", and my second favorite food is ", _faveFood2_
+  faveFood1,
+  ", and my second favorite food is ", faveFood2
 )
 
 if (_faveFood2_.length > 0) {
   // Redeclare _faveFood1_ within this scope only
-  ___ _faveFood1_ = "Enter__NEW__#1_Favorite_Food_Here"
+  let faveFood1 = Sushi
 
   console.log(
     "jk! ",
-    _faveFood1_,
+    faveFood1,
     " is actually my #1 favorite food."
   )
 }
