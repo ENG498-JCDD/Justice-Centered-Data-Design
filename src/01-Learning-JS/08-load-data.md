@@ -64,7 +64,7 @@ In this project, check out the `/src/data/events.json` file, which is a small ex
   What other properties of JSON do you notice?
 </p>
 
-**RESPONSE**: Write your response here.
+**RESPONSE**: I'm noticing strings and values. I appreciate how clear its formatting is as well; it is, as you said in your explanation, a collection of Objects separated by commas! I always like when these things are succinct and easy to understand visually!
 
 ## 1.8.2 Framework's FileAttachment()
 
@@ -208,7 +208,7 @@ In the table below, review what file formats are currently supported and what da
 
 Observable Framework also provides us with the ability to preload and preprocess larger data sets with data loaders.
 
-Data loaders helps us widdle larger data sets down to smaller sizes before the page loads on the user (client) side for better performance and easier comprehension. However, we can't really learn how to use them quite yet, since it involves coding with the data and data formats. So, for now, just know that we will learn about this option later.
+Data loaders helps us wittle larger data sets down to smaller sizes before the page loads on the user (client) side for better performance and easier comprehension. However, we can't really learn how to use them quite yet, since it involves coding with the data and data formats. So, for now, just know that we will learn about this option later.
 
 If you wish to read about them, see Observable Framework's "[Data loaders](https://observablehq.com/framework/data-loaders)" page.
 
@@ -221,6 +221,13 @@ Goal: Demonstrate your understanding of the CSV file format by creating a mini C
 Use the empty codeblock below.
 
 ```
+food, drink, dessert
+italian wedding soup, diet dr pepper, tiramisu 
+meat lovers pizza, pepsi zero, cinnamon bread
+popcorn chicken, grape juice, sugar cookies
+ham and cheese sandwich, milk, m&m yogurt cup
+steak, red wine, vegan chocolate cupcake
+
 ```
 
 ### E2. Load a CSV file
@@ -234,12 +241,15 @@ In this case, load the following CSV file: `nc_absentee_mail_2024.csv`.
 2. In the second codeblock, use `console.log()` to log the following properties to the console: `.name` and `.size`.
 3. Still in the second codeblock, add a second `console.log()` and log the first object in the Array to the console.
 
-```javascript
+```js
 // Your FileAttachment() code goes here
+const data = FileAttachment("./../data/nc-voters/nc_absentee_mail_2024.csv").csv({typed:true})
 ```
 
-```javascript
+```js
 // Your other code with your variable goes here
+console.log(data.name, data.size,)
+console.log(data[0])
 ```
 
 Make sure that you verify the logs are there!
