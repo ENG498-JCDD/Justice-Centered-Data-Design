@@ -394,12 +394,11 @@ professions
 
 For this first exercise, I'll provide you with the basic structure:
 
-```javascript
-// Declare new and freshly empty array in which to push new items
+```js
 let lessProfessions = []
-for () {
-  if () {
-    // Do something in here
+for (const job in professions) {
+  if (job != 1) {
+  lessProfessions.push(professions[job])
   }
 }
 ```
@@ -408,50 +407,71 @@ for () {
   Interactive output of the array of <code>lessProfessions</code>
 </p>
 
-```javascript
-// Convert me to output `lessProfessions`
-lessProfessions
+```js
+ lessProfessions
 ```
 
 ### E2. Push/add a new profession to an array
 
 **Goal**: Add a new profession as a String, `"spinster"`, to your `professions` list, then log it to the web console.
 
-```javascript
-// Convert and code here
+```js
+lessProfessions.push("spinster")
+```
+```js
+lessProfessions
+```
+```js
+console.log(lessProfessions)
 ```
 
 <p class="codeblock-caption">
   Interactive output of the array of <code>lessProfessions</code>
 </p>
 
-```javascript
-// Convert me to output `professions`
-professions
-```
-
 ### E3. Loop through an array and log to the console
 
 **Goal**: Make a `for` loop that considers each item in the `professions` array and logs "Person's profession is ___", which "___" should be the profession from the array.
 
-```javascript
-// Convert and code here
+```js
+for (const job of professions) {
+  console.log("Person's profession is", job)
+}
 ```
 
 ### E4. More conditional pushing with `for...of`
 
 **Goal**: Create a new array and populate, i.e., push all items from the `childStatus` array, except for any empty Strings. Use a `for...of` loop to do so.
 
-```javascript
-// Your code here
+```js
+let childStatusNew = []
+
+for (const child of childStatus) {
+  if (child != "") {
+    childStatusNew.push(child)
+  }
+}
+```
+```js
+childStatusNew 
 ```
 
 ### E5. Conditional logging
 
 **Goal**: Make a `for` loop that considers each item in the `childStatus` list. Log `"Person has child"` ***if*** the person has a child ***and*** `"Person does not have child"` ***if not***. Use `.length` in your conditional statement to enact this logging.
 
-```javascript
-// Your code here
+```js
+for (const child of childStatus) {
+  if (child.length > 1) {
+    console.log("Person has child")
+  }
+  else {
+    console.log("Person does not have child")
+}
+}
+```
+```js
+console.log(childStatus)
 ```
 
 Make sure you check to see if the correct language has been logged to the web console.
@@ -460,14 +480,12 @@ Make sure you check to see if the correct language has been logged to the web co
 
 **Goal**: Add a new String to the list `sex` called `"unknown"`. Output it to the page.
 
-For your reference, here's the original declaration and instantiation of `sex`: `let sex = ["f", "m", "f", "m", "i"]`.
+For your reference, here's the original declaration and instantiation of `sex`: 
 
-```javascript
-// Convert and code here
+```js
+sex.push("unknown")
 ```
-
-```javascript
-// Convert and output here
+```js
 sex
 ```
 
@@ -475,8 +493,20 @@ sex
 
 **Goal**: Make a `for` loop that considers each item in the `sex` list. Log "Person is male" ***if*** the person is `"m"`, "Person is female" ***if*** the person is `"f"`, "Person is intersex" ***if*** the person is `"i"`, and "Person's sex is not known" ***if*** `"unknown"`.
 
-```javascript
-// Your code here
+```js
+for (const label of sex) {
+  if (label == "m") {
+    console.log("Person is male")
+  }
+else if (label == "f") {
+    console.log("Person is female")
+  }
+else if (label == "i") {
+    console.log("Person is intersex")
+  }
+else if (label == "unknown")
+    console.log("Person's sex is not known")
+  }
 ```
 
 Make sure to check if the items are logged correctly.
@@ -487,16 +517,25 @@ Make sure to check if the items are logged correctly.
 
 Since this is your first big use of `.map()`, I'll give you the skeleton of the expression:
 
-```javascript
+```js
 // Skeleton of .map()
-let sexFullTerm = sex.map(
+let sexFullTerm = sex.map (
   (sexItem) => {
-    // Enter your code in here,
-    // which will include conditional statements.
-    // Also, be sure to use `return` statements
-    // where appropriate!
-  }
-)
+if (sexItem == "f") {
+  return "female"
+}
+else if (sexItem == "m") {
+  return "male"
+}
+else if (sexItem == "i") {
+  return "intersex"
+}
+else {
+  return "unknown"
+}})
+```
+```js
+sexFullTerm
 ```
 
 ## Submission
