@@ -128,6 +128,18 @@ Sometimes we need to compare values in our project. Comparison operators allow u
 
 <p class="tip">Open your console and try them out by using some of the examples below.</p>
 
+```javascript
+let x = 5
+y = 4
+x*=y;
+let a =
+10 / '5';
+a =
+console.log(a)=
+
+```
+
+
 <video controls style="width: 620px; height:620px">
   <source src="../assets/vids/01-js/01.3-operators-console.mp4" type="video/mp4" />
 </video>
@@ -218,7 +230,12 @@ First, go back to the last chapter and grab the suite of primitives that you cre
 5. Check your work, as you go, by opening the browser console with the **Inspect Element** tool.
 
 ```javascript
-// Write your code in here
+let FavFilm = 1
+let FavFilm2 = 2
+console.log(
+For me, EEAAO is my number "FavFilm" favorite film.
+Also, Mulan is my "FavFilm2"nd favorite film. 
+)
 ```
 
 ## Submission
