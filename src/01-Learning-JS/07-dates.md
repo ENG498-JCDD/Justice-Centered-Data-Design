@@ -228,7 +228,7 @@ Here's how:
     const parseDateSlash = utcParse("%d/%m/%Y")
     ```
 2. Use the parser assigned to `parseDateSlash` to convert dates into a JS Date() object that follow the set's particular format, but are currently Strings.
-    ```javascript
+    ```js
     // Result: Date Sun Nov 09 2025 19:00:00 GMT-0500 (Eastern Standard Time)
     parseDateSlash(nc2024SampleVoters[0].ballot_req_dt)
     ```
@@ -371,12 +371,24 @@ Here are some tips to consider as you complete this exercise.
 <p class="tip"><strong>Isolate interested parts of data</strong>: If dates are important to the inquiry, remember that the dates are stored as Strings in the following format: <code>"10/24/2024"</code>, i.e.,<code>"mm/dd/YYYY"</code>.</p>
 
 <!-- E1 -->
-```javascript
-// Convert and code here
+```js
+const parseDateSlash = utcParse("%m/%d/%Y")
+let ballotsWithDateObjs = nc2024SampleVoters.map(
+  (ballot) => {
+    ballot.ballot_req_dt_obj = parseDateSlash(ballot.ballot_req_dt)
+    return ballot
+  }
+)
+  // (ballot) => {
+  //   console.log(nc2024SampleVoters)
+  //   let ballot_req_dt_obj = parseDateSlash(nc2024SampleVoters.ballot_req_dt)
+  //   return ballot_req_dt_obj
+  // }
+// )
+
 ```
 
-```javascript
-// Convert and output
+```js
 ballotsWithDateObjs
 ```
 
@@ -385,15 +397,22 @@ ballotsWithDateObjs
 **Goal**: Use `.map()` to loop through the updated array of objects, `ballotsWithDateObjs`, and create a new array of objects called `updatedBallots`. In the new `updatedBallots`, use `d3.utcFormat()` to assign a converted and formatted version of `ballot_req_dt_obj` with the following date ***format***: Wed., January 27, 1981.
 
 <!-- E2 -->
-```javascript
-// Convert and code here
+```js
+const formatPrettyDayOfWeek = d3.utcFormat("%a., %m %d, %Y")
+console.log(ballotsWithDateObjs)
+
+const updatedBallots = ballotsWithDateObjs.map(
+  (ballot) => {
+    ballot.formattedDates = formatPrettyDayOfWeek(ballot.ballot_req_dt_obj)
+    return ballot
+  }
+)
+
 ```
 
-```javascript
-// Convert and output updatedBallots here
-updatedBallots
+```js
+// updatedBallots
 ```
-
 ## Submission
 
 1. Create a **PR** (**pull request**) and use the provided content in the template to start it.

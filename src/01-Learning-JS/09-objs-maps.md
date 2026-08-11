@@ -295,7 +295,7 @@ Let's use the `nc2024SampleVoters` Array of objects to learn about looping throu
 In JS, one of the current best practices is to use the `for...of` loop. This looping method helps you define a meaningful variable to use within the scope of the loop. In this case, each object in the array represents one voter, so it makes sense to name the variable as such.
 
 <!-- for...of example -->
-```javascript
+```js
 for (const voter of nc2024SampleVoters) {
   console.log(
     "Voter number",

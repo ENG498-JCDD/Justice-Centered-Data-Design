@@ -361,7 +361,11 @@ You have the choice about which for loop to use: `for...in` vs. `for...of`. You 
 
 Let's use the following array lists for these exercises.
 
+<<<<<<< Updated upstream
 ```javascript
+=======
+```js
+>>>>>>> Stashed changes
 let professions = ["married", "laborer", "widow", "laborer", ]
 let childStatus = ["Child Alana 10 days", "Catherine 2 mos", "", "Charles Riley afed 10 days" ]
 let sex = ["f", "m", "f", "m", "i"]
@@ -434,8 +438,15 @@ professions
 
 **Goal**: Make a `for` loop that considers each item in the `professions` array and logs "Person's profession is ___", which "___" should be the profession from the array.
 
+<<<<<<< Updated upstream
 ```javascript
 // Convert and code here
+=======
+```js
+for (const profession in newProfessions) {
+    console.log("Person's professions is")
+  }
+>>>>>>> Stashed changes
 ```
 
 ### E4. More conditional pushing with `for...of`
